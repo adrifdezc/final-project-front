@@ -41,6 +41,27 @@ function CocktailsDetailsPage(props) {
         <>
           <h1>{cocktail.strDrink}</h1>
           <p>{cocktail.strInstructions}</p>
+          <p>
+            {cocktail.strMeasure1}: {cocktail.strIngredient1}
+          </p>
+          <p>
+            {cocktail.strMeasure2}: {cocktail.strIngredient2}
+          </p>
+          <p>
+            {cocktail.strMeasure3}: {cocktail.strIngredient3}
+          </p>
+          <p>
+            {cocktail.strMeasure4}:{cocktail.strIngredient4}
+          </p>
+          <p>
+            {cocktail.strMeasure5}:{cocktail.strIngredient5}
+          </p>
+          <p>
+            {cocktail.strMeasure6}:{cocktail.strIngredient6}
+          </p>
+          <p>
+            {cocktail.strMeasure7}:{cocktail.strIngredient7}
+          </p>
         </>
       )}
 

@@ -14,6 +14,7 @@ import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./components/PrivateRoute"; // <== IMPORT
 import AnonRoute from "./components/AnonRoute"; // <== IMPORT
 
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
