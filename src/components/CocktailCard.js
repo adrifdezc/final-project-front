@@ -9,7 +9,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 
 const CocktailCard = ({ cocktail }) => {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const {  user } = useContext(AuthContext);
   
   const handleSubmit = () => {
     axios({
@@ -18,7 +18,7 @@ const CocktailCard = ({ cocktail }) => {
       data: {cocktail: cocktail, user: user}
     })
     .then(result=>{
-      console.log(result)
+      console.log(`Result: `,result)
     })
     .catch(error=>console.log(error))
   }
