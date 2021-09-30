@@ -2,7 +2,6 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import NavbarComp from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import LandingPage from "./pages/LandingPage";
 import CocktailsPage from "./pages/CocktailsPage";
@@ -24,7 +23,6 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/home" component={HomePage} />
 
         {/* 👇 UPDATE THE EXISTING ROUTES 👇  */}
         <PrivateRoute exact path="/cocktails" component={CocktailsPage} />

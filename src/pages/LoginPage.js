@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { AuthContext } from "./../context/auth.context";
-
+import { AuthContext } from "../context/auth.context";
+import Landing from "../components/Landing/Landing";
 const API_URL = process.env.REACT_APP_API_URL;
 
 
@@ -37,24 +37,37 @@ function LoginPage(props) {
   };
   
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <>
+      <Landing />
+      <div className="LoginPage">
+        <h1>Login</h1>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+        <form onSubmit={handleLoginSubmit}>
+          <input
+            type="text"
+            name="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={handleEmail}
+          />
 
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePassword}
+          />
 
-        <button type="submit">Login</button>
-      </form>
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
+          <button type="submit">Log In</button>
+        </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
-    </div>
-  )
+        <p>Don't have an account yet?</p>
+        <Link to={"/signup"}> Sign Up</Link>
+      </div>
+    </>
+  );
 }
 
 export default LoginPage;

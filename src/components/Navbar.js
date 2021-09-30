@@ -7,7 +7,7 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-
+import Logo from "./Landing/Logo.png"
 function NavbarComp() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
@@ -18,16 +18,13 @@ function NavbarComp() {
       <Navbar className="navbar" bg="dark" expand="lg">
         <Container>
           <Link to="/">
-            <Navbar.Brand>COCKTAIL APP</Navbar.Brand>
+            <Navbar.Brand> <img src= {Logo} alt="" style={{height: "45px"}}/></Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {isLoggedIn ? (
               <>
                 <Nav className="me-auto">
-                  <Link to="/home">
-                  Home
-                  </Link>
                   <Link to="/profile">
                     Profile
                   </Link>

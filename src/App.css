@@ -63,13 +63,27 @@ header img {
 input[type='text'] {
   display: block;
   padding: 10px;
-  font-size: 20px;
+  text-align: center;
   border: 0;
   border-radius: 5px;
   width: 60%;
-  margin: auto;
+  margin: 10px;
   outline: none;
 }
+.landing{
+    background-image: url("./components/Landing/background.jpeg");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.LoginPage > h1, .SignupPage > h1{
+  color:#ffaf04;
+}
+
+  
 
 .cards {
   display: grid;

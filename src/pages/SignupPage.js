@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Landing from "../components/Landing/Landing";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -35,27 +36,27 @@ function SignupPage(props) {
 
   
   return (
+    <>
+    <Landing/>
     <div className="SignupPage">
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+        <input type="text" name="email" placeholder="E-mail" value={email} onChange={handleEmail} />
 
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        <input type="password" name="password" placeholder="Password" value={password} onChange={handlePassword} />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+        <input type="text" name="name" value={name} placeholder="Name" onChange={handleName} />
 
         <button type="submit">Sign Up</button>
       </form>
 
       { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <p>Already have an account?</p>
+      <Link to={"/login"}> Log In</Link>
     </div>
+    </>
   )
 }
 

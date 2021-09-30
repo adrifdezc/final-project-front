@@ -1,5 +1,6 @@
+import Landing from "../components/Landing/Landing";
 function LandingPage() {
-  return <div className="Home">THIS IS THE LANDING PAGE</div>;
+  return <div className="Home"><Landing/></div>;
 }
 
 export default LandingPage;
