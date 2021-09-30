@@ -35,43 +35,65 @@ function CocktailsDetailsPage(props) {
   }, [loading]);
 
   return (
-    <div className="CocktailDetails">
-      <p>hello</p>
+    <div className="CocktailDetails text-center">
       {cocktail && (
-        <>
-          <h1>{cocktail.strDrink}</h1>
-          <p>{cocktail.strInstructions}</p>
-          <p>
-            {cocktail.strMeasure1}: {cocktail.strIngredient1}
-          </p>
-          <p>
-            {cocktail.strMeasure2}: {cocktail.strIngredient2}
-          </p>
-          <p>
-            {cocktail.strMeasure3}: {cocktail.strIngredient3}
-          </p>
-          <p>
-            {cocktail.strMeasure4}:{cocktail.strIngredient4}
-          </p>
-          <p>
-            {cocktail.strMeasure5}:{cocktail.strIngredient5}
-          </p>
-          <p>
-            {cocktail.strMeasure6}:{cocktail.strIngredient6}
-          </p>
-          <p>
-            {cocktail.strMeasure7}:{cocktail.strIngredient7}
-          </p>
-        </>
-      )}
+        <div className="row">
+          <div className="col-3">
+            <img
+              src={cocktail.strDrinkThumb}
+              alt={cocktail.strDrink}
+              style={{ width: "200px" }}
+            />
+          </div>
+          <div className="col-9">
+            <h1>{cocktail.strDrink}</h1>
+            <p>{cocktail.strInstructions}</p>
+            {cocktail.strIngredient1 && (
+              <p>
+                {cocktail.strMeasure1} {cocktail.strIngredient1}
+              </p>
+            )}
+            {cocktail.strIngredient2 && (
+              <p>
+                {cocktail.strMeasure2} {cocktail.strIngredient2}
+              </p>
+            )}
+            {cocktail.strIngredient3 && (
+              <p>
+                {cocktail.strMeasure3} {cocktail.strIngredient3}
+              </p>
+            )}
+            {cocktail.strIngredient4 && (
+              <p>
+                {cocktail.strMeasure4} {cocktail.strIngredient4}
+              </p>
+            )}
+            {cocktail.strIngredient5 && (
+              <p>
+                {cocktail.strMeasure5} {cocktail.strIngredient5}
+              </p>
+            )}
+            {cocktail.strIngredient6 && (
+              <p>
+                {cocktail.strMeasure6} {cocktail.strIngredient6}
+              </p>
+            )}
+            {cocktail.strIngredient7 && (
+              <p>
+                {cocktail.strMeasure7} {cocktail.strIngredient7}
+              </p>
+            )}
+          </div>
 
       <Link to="/cocktails">
         <button>Back to cocktails</button>
       </Link>
 
       <Link to={`/cocktails/edit/${cocktailId}`}>
-        <button>Edit Cocktail</button>
+        <button>Add to FAVs</button>
       </Link>
+        </div>
+      )}
     </div>
   );
 }

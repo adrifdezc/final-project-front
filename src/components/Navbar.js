@@ -15,7 +15,7 @@ function NavbarComp() {
   
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
+      <Navbar className="navbar" bg="dark" expand="lg">
         <Container>
           <Link to="/">
             <Navbar.Brand>COCKTAIL APP</Navbar.Brand>
@@ -34,7 +34,7 @@ function NavbarComp() {
                   <Link to="/cocktails">
                    Cocktail
                   </Link>
-                  <button onClick={logOutUser}>Logout</button>
+                  <button className="logout" onClick={logOutUser}>Logout</button>
                   <NavDropdown title="More" id="basic-nav-dropdown">
                     <Link to="/cart">
                       <NavDropdown.Item href="#cart">

@@ -12,7 +12,17 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none!important;
+  color: inherit!important;
+  margin: 10px;
+}
+.logout{
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.me-auto{
+align-items: center
 }
 
 .container {

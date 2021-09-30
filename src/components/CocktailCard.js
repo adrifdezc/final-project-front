@@ -2,16 +2,20 @@ import React from "react";
 import Button from "@restart/ui/esm/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "./../context/auth.context"; 
+import { useContext } from "react";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const CocktailCard = ({ cocktail }) => {
 
+const CocktailCard = ({ cocktail }) => {
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  
   const handleSubmit = () => {
     axios({
       method: "POST",
       url: `${API_URL}/add-favorite`,
-      data: {cocktail}
+      data: {cocktail: cocktail, user: user}
     })
     .then(result=>{
       console.log(result)
