@@ -23,9 +23,6 @@ function ProfilePage() {
       data: { user: user },
       headers: { Authorization: `Bearer ${storedToken}` },
     })
-      // .get(`${API_URL}/profile`, user, {
-      //   headers: { Authorization: `Bearer ${storedToken}` },
-      // })
       .then((response) => {
         console.log(response);
         setCocktails(response.data.favorites);
@@ -37,24 +34,21 @@ function ProfilePage() {
     getAllCocktails();
   }, []);
 
-  /* 
-    Useeffect 1- primera vez que cargue[] 
-    Llamada get a backend buscando usuario por nom or id
-    devuelve populate
-    favorites.map
-    */
-
   return (
     isLoading ? <p>Loading..</p> : 
     <div className="Profile">
       <h1>Profile Page</h1>
       <section className="cards" id="search">
+                      <div className="row">
+
         {cocktails?.map((cocktail) => (
           <CocktailCard
             loadingPage={"profile"}
             key={cocktail.idDrink}
-            cocktail={cocktail}   />
+            cocktail={cocktail}
+            getCocktails = {getAllCocktails}  />
         ))}
+        </div>
       </section>
     </div>
   );

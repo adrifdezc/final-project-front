@@ -55,7 +55,7 @@ nav li {
   justify-content: flex-end
 }
 
-.card {
+.SignupPage > .card, .LoginPage > .card {
   width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;

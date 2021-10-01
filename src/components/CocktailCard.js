@@ -2,57 +2,64 @@ import React from "react";
 import Button from "@restart/ui/esm/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "./../context/auth.context"; 
-import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
+import { useContext} from "react";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
+  const { user } = useContext(AuthContext);
 
-const CocktailCard = ({ cocktail, loadingPage }) => {
-  const {  user } = useContext(AuthContext);
-  
   const handleSubmit = () => {
     axios({
       method: "POST",
       url: `${API_URL}/add-favorite`,
-      data: {cocktail: cocktail, user: user}
+      data: { cocktail: cocktail, user: user },
     })
-    .then(result=>{
-      console.log(`Result: `,result)
+      .then((result) => {
+        console.log(`Result: `, result);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleDelete = () => {
+    axios({
+      method: "POST",
+      url: `${API_URL}/delete-favorite`,
+      data: { cocktail: cocktail, user: user },
     })
-    .catch(error=>console.log(error))
-  }
+      .then((result) => {
+        console.log(`Result2: `, result);
+        getCocktails();
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
-    <div className="card">
-      <div className="card-inner">
-        <div className="card-front">
-          <img src={cocktail.strDrinkThumb} alt="" />
-        </div>
-        <div className="card-back">
-          <h1>{cocktail.strDrink}</h1>
-          <ul>
-            <li>
-              <strong>Category:</strong> {cocktail.strCategory}
-            </li>
-            {cocktail.strTags && (
-              <li>
-                <strong>Tags:</strong> {cocktail.strTags}
-              </li>
+    <div className="col-lg-2 col-sm-4">
+      <div className="card">
+        <img src={cocktail.strDrinkThumb} alt="" />
+        <h5 className="text-center">{cocktail.strDrink}</h5>
+        <div className="row">
+          <div className="col-6">
+            {loadingPage === "cocktailList" ? (
+              <Button onClick={handleSubmit}>
+                <i class="fa fa-heart-o"></i>{" "}
+              </Button>
+            ) : (
+              <Button onClick={handleDelete}>
+                {" "}
+                <i class="fa fa-trash-o"></i>{" "}
+              </Button>
             )}
-            <li>
-              <strong>Alcoholic:</strong> {cocktail.strAlcoholic}
-            </li>
-            {}
-            {loadingPage === "cocktailList" 
-            ?
-            <Button onClick={handleSubmit}>Add Favorites </Button>
-            :
-            <Button> Delete </Button>}
+          </div>
+          <div className="col-6">
             <Link to={`cocktails/${cocktail.idDrink}`}>
-              <Button>See Details</Button>
+              <Button>
+                <i class="fa fa-navicon"></i>
+              </Button>
             </Link>
-          </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -60,6 +67,3 @@ const CocktailCard = ({ cocktail, loadingPage }) => {
 };
 
 export default CocktailCard;
-
-
-

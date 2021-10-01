@@ -9,7 +9,7 @@ const Search = ({ getQuery }) => {
   };
 
   return (
-    <section className="Search">
+    <section id="Search-bar">
       <form action="">
         <input
           type="text"
@@ -17,7 +17,7 @@ const Search = ({ getQuery }) => {
           placeholder="Search by name..."
           value={text}
           onChange={(e) => onChange(e.target.value)}
-          autoFocus
+          // autoFocus
         />
       </form>
     </section>

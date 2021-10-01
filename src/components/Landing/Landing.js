@@ -1,10 +1,15 @@
 import React from 'react'
 
-function Landing() {
+function Landing({landingPage}) {
     return (
-        <div className="landing">
-        </div>
-    )
+      <>
+        {landingPage !== "landingPage" ? (
+          <div className="landing"></div>
+        ) : (
+          <div className="landing2"></div>
+        )}
+      </>
+    );
 }
 
 export default Landing
