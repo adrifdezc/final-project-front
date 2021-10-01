@@ -18,20 +18,17 @@ function NavbarComp() {
       <Navbar className="navbar" bg="dark" expand="lg">
         <Container>
           <Link to="/">
-            <Navbar.Brand> <img src= {Logo} alt="" style={{height: "45px"}}/></Navbar.Brand>
+            <Navbar.Brand>
+              {" "}
+              <img src={Logo} alt="" style={{ height: "45px" }} />
+            </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {isLoggedIn ? (
               <>
                 <Nav className="me-auto">
-                  <Link to="/profile">
-                    Profile
-                  </Link>
-                  <Link to="/cocktails">
-                   Cocktail
-                  </Link>
-                  <button className="logout" onClick={logOutUser}>Logout</button>
+                  <Link to="/cocktails">Cocktail</Link>
                   <NavDropdown title="More" id="basic-nav-dropdown">
                     <Link to="/cart">
                       <NavDropdown.Item href="#cart">
@@ -40,7 +37,10 @@ function NavbarComp() {
                     </Link>
                   </NavDropdown>
                 </Nav>
-                <span>{user.name}</span>
+               <Link to="/profile"> <span>{user.name}</span></Link>
+                <button className="logout" onClick={logOutUser}>
+                  | {"\u00A0"} Logout
+                </button>
               </>
             ) : (
               <>

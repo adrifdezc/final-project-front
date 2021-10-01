@@ -8,7 +8,7 @@ import { useContext } from "react";
 const API_URL = process.env.REACT_APP_API_URL;
 
 
-const CocktailCard = ({ cocktail }) => {
+const CocktailCard = ({ cocktail, loadingPage }) => {
   const {  user } = useContext(AuthContext);
   
   const handleSubmit = () => {
@@ -43,7 +43,12 @@ const CocktailCard = ({ cocktail }) => {
             <li>
               <strong>Alcoholic:</strong> {cocktail.strAlcoholic}
             </li>
+            {}
+            {loadingPage === "cocktailList" 
+            ?
             <Button onClick={handleSubmit}>Add Favorites </Button>
+            :
+            <Button> Delete </Button>}
             <Link to={`cocktails/${cocktail.idDrink}`}>
               <Button>See Details</Button>
             </Link>

@@ -51,6 +51,7 @@ function ProfilePage() {
       <section className="cards" id="search">
         {cocktails?.map((cocktail) => (
           <CocktailCard
+            loadingPage={"profile"}
             key={cocktail.idDrink}
             cocktail={cocktail}   />
         ))}

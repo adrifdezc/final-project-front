@@ -22,12 +22,13 @@ a {
   color: white;
 }
 .me-auto{
-align-items: center
+align-items: center;
+padding-left: 32%!important;
 }
 
 .container {
   max-width: 1100px;
-  margin: auto;
+  margin: 0px!important;
   padding: 0 20px;
 }
 

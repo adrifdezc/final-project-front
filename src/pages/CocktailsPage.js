@@ -22,7 +22,7 @@ function CocktailsPage() {
 
   const cocktailList = cocktails?.map((cocktail) => (
         cocktail.strDrink.toLowerCase().includes(query)&&(
-        <CocktailCard key={cocktail.idDrink} cocktail={cocktail} {...cocktail}></CocktailCard> )))
+        <CocktailCard loadingPage={"cocktailList"} key={cocktail.idDrink} cocktail={cocktail} {...cocktail}></CocktailCard> )))
 
   return isLoading ? (
     <h1>LOADING...</h1>
