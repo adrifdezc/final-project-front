@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./../context/auth.context";
+import { useContext } from "react";
+import Button from "@restart/ui/esm/Button"
+import FavButton from "../components/FavButton/FavButton";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const getById = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
 function CocktailsDetailsPage(props) {
+    const { user } = useContext(AuthContext);
+const storedToken = localStorage.getItem("authToken");
+
   const [cocktail, setCocktail] = useState(null);
   const cocktailId = props.match.params.cocktailId;
-  const [loading, setLoading] = useState(true)
-  
+  const [loading, setLoading] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
 
   const getCocktail = () => {
 
@@ -17,15 +26,45 @@ function CocktailsDetailsPage(props) {
       .then((response) => {
         const oneCocktail = response.data.drinks[0];
         setCocktail(oneCocktail);
+        console.log(oneCocktail)
         setLoading(false)
       })
       .catch((error) => console.log(error));
   };
-
+ const handleSubmit = () => {
+   axios({
+     method: "POST",
+     url: `${API_URL}/add-favorite`,
+     data: { cocktail: cocktail, user: user }
+   })
+     .then((result) => {
+       console.log(`Result: `, result);
+       setIsClicked(true)
+     })
+     .catch((error) => console.log(error));
+ };
   useEffect(() => {
     getCocktail();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleCart = (ingredient) => {
+    axios
+      .post(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`
+      )
+      .then((response) =>{
+        console.log(response.data.ingredients[0])
+        axios({
+          method: "POST",
+          url: `${API_URL}/add-ingredient`,
+          data: response.data.ingredients[0],
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }).then((response) => console.log(response));
+        
+      }
+      );
+  };
 
   useEffect(() => {
     if (loading === false) {
@@ -50,48 +89,69 @@ function CocktailsDetailsPage(props) {
             <p>{cocktail.strInstructions}</p>
             {cocktail.strIngredient1 && (
               <p>
-                {cocktail.strMeasure1} {cocktail.strIngredient1}
+                {cocktail.strMeasure1} {cocktail.strIngredient1}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient1)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
             {cocktail.strIngredient2 && (
               <p>
-                {cocktail.strMeasure2} {cocktail.strIngredient2}
+                {cocktail.strMeasure2} {cocktail.strIngredient2}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient2)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
             {cocktail.strIngredient3 && (
               <p>
-                {cocktail.strMeasure3} {cocktail.strIngredient3}
+                {cocktail.strMeasure3} {cocktail.strIngredient3}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient3)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
             {cocktail.strIngredient4 && (
               <p>
-                {cocktail.strMeasure4} {cocktail.strIngredient4}
+                {cocktail.strMeasure4} {cocktail.strIngredient4}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient4)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
             {cocktail.strIngredient5 && (
               <p>
-                {cocktail.strMeasure5} {cocktail.strIngredient5}
+                {cocktail.strMeasure5} {cocktail.strIngredient5}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient5)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
             {cocktail.strIngredient6 && (
               <p>
-                {cocktail.strMeasure6} {cocktail.strIngredient6}
+                {cocktail.strMeasure6} {cocktail.strIngredient6}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient6)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
             {cocktail.strIngredient7 && (
               <p>
-                {cocktail.strMeasure7} {cocktail.strIngredient7}
+                {cocktail.strMeasure7} {cocktail.strIngredient7}{" "}
+                <button onClick={() => handleCart(cocktail.strIngredient7)}>
+                  <i class="fa fa-cart-plus"></i>
+                </button>
               </p>
             )}
           </div>
 
-      <Link to="/cocktails">
-        <button>Back to cocktails</button>
-      </Link>
+          <Link to="/cocktails">
+            <button>Back to cocktails</button>
+          </Link>
 
-      <Link to={`/cocktails/edit/${cocktailId}`}>
-        <button>Add to FAVs</button>
-      </Link>
+          <Button onClick={handleSubmit}>
+            <FavButton isClicked={isClicked} />
+          </Button>
         </div>
       )}
     </div>

@@ -3,12 +3,18 @@ import Button from "@restart/ui/esm/Button";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "./../context/auth.context";
-import { useContext} from "react";
+import { useContext } from "react";
+import FavButton from "./FavButton/FavButton";
+import { useState, useEffect } from "react";
+import SeeDetailsButton from "./SeeDetailsButton/SeeDetailsButton";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
   const { user } = useContext(AuthContext);
+
+  const [isClicked, setIsClicked] = useState(false);
+  const [seeDetails, setSeeDetails] = useState(false);
 
   const handleSubmit = () => {
     axios({
@@ -18,6 +24,7 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
     })
       .then((result) => {
         console.log(`Result: `, result);
+        setIsClicked(true);
       })
       .catch((error) => console.log(error));
   };
@@ -35,34 +42,60 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
       .catch((error) => console.log(error));
   };
 
+  const handleClick = () => {
+    if (seeDetails === false) {
+      setSeeDetails(true);
+    } else {
+      setSeeDetails(false);
+    }
+  };
+
   return (
-    <div className="col-lg-2 col-sm-4">
-      <div className="card">
-        <img src={cocktail.strDrinkThumb} alt="" />
-        <h5 className="text-center">{cocktail.strDrink}</h5>
-        <div className="row">
-          <div className="col-6">
-            {loadingPage === "cocktailList" ? (
-              <Button onClick={handleSubmit}>
-                <i class="fa fa-heart-o"></i>{" "}
-              </Button>
+    <>
+      <div className="col-lg-2 col-sm-4">
+        <div className="card">
+          <img src={cocktail.strDrinkThumb} alt="" />
+          <h5 className="text-center">{cocktail.strDrink}</h5>
+          <div className="row">
+            {!seeDetails ? (
+              <>
+                <div className="col-6">
+                  {loadingPage === "cocktailList" ? (
+                    <Button onClick={handleSubmit}>
+                      <FavButton isClicked={isClicked} />
+                    </Button>
+                  ) : (
+                    <Button onClick={handleDelete}>
+                      {" "}
+                      <i className="fa fa-trash-o"></i>{" "}
+                    </Button>
+                  )}
+                </div>
+                <div className="col-6">
+                  <Button onClick={handleClick}>
+                    <SeeDetailsButton
+                      cocktail={cocktail}
+                      seeDetails={seeDetails}
+                    />
+                  </Button>
+                </div>
+              </>
             ) : (
-              <Button onClick={handleDelete}>
-                {" "}
-                <i class="fa fa-trash-o"></i>{" "}
-              </Button>
+              <>
+                <div className="col-12">
+                  <Button onClick={handleClick}>
+                    <SeeDetailsButton
+                      cocktail={cocktail}
+                      seeDetails={seeDetails}
+                    />
+                  </Button>
+                </div>
+              </>
             )}
-          </div>
-          <div className="col-6">
-            <Link to={`cocktails/${cocktail.idDrink}`}>
-              <Button>
-                <i class="fa fa-navicon"></i>
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

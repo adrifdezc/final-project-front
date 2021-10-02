@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "./../context/auth.context"; // <== IMPORT
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
-import Logo from "./Landing/Logo.png"
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import Logo from "./Landing/Logo.png";
 function NavbarComp() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  
+
   return (
     <div className="App">
       <Navbar className="navbar" bg="dark" expand="lg">
@@ -28,16 +23,15 @@ function NavbarComp() {
             {isLoggedIn ? (
               <>
                 <Nav className="me-auto">
-                  <Link to="/cocktails">Cocktail</Link>
-                  <NavDropdown title="More" id="basic-nav-dropdown">
-                    <Link to="/cart">
-                      <NavDropdown.Item href="#cart">
-                        Shopping Cart
-                      </NavDropdown.Item>
-                    </Link>
-                  </NavDropdown>
+                  <Link to="/cocktails">Cocktails</Link>
                 </Nav>
-               <Link to="/profile"> <span>{user.name}</span></Link>
+                <Link to="/profile">
+                  {" "}
+                  <span>{user.name}</span>
+                </Link>
+                <Link to="/cart">
+                  <i class="fa fa-shopping-cart"></i>
+                </Link>
                 <button className="logout" onClick={logOutUser}>
                   | {"\u00A0"} Logout
                 </button>

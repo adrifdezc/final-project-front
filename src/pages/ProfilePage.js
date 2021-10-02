@@ -15,8 +15,6 @@ function ProfilePage() {
   const getAllCocktails = () => {
     const storedToken = localStorage.getItem("authToken");
 
-    //GET se pasa la info en la url
-    //POST por data 
     axios({
       method: "POST",
       url: `${API_URL}/profile`,
@@ -32,6 +30,7 @@ function ProfilePage() {
   };
   useEffect(() => {
     getAllCocktails();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
