@@ -33,7 +33,6 @@ function CocktailsPage() {
         <section className="cards" id="search">
       <div className="row">
           {
-            //if cocktails not undefined .map
             cocktailList || <h1>There's no cocktail</h1>
           }
       </div>

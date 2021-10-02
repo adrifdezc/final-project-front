@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "./../context/auth.context"; // <== IMPORT
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import Logo from "./Landing/Logo.png";
 function NavbarComp() {
   // Subscribe to the AuthContext to gain access to
@@ -30,7 +30,7 @@ function NavbarComp() {
                   <span>{user.name}</span>
                 </Link>
                 <Link to="/cart">
-                  <i class="fa fa-shopping-cart"></i>
+                  <i className="fa fa-shopping-cart"></i>
                 </Link>
                 <button className="logout" onClick={logOutUser}>
                   | {"\u00A0"} Logout

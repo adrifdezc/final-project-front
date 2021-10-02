@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import CocktailsPage from "./pages/CocktailsPage";
 import CartPage from "./pages/CartPage";
 import CocktailsDetailsPage from "./pages/CocktailsDetailsPage";
+import CreateCocktail from "./pages/CreateCocktail";
 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
@@ -27,6 +28,7 @@ function App() {
         {/* 👇 UPDATE THE EXISTING ROUTES 👇  */}
         <PrivateRoute exact path="/cocktails" component={CocktailsPage} />
         <PrivateRoute exact path="/profile" component={ProfilePage} />
+        <PrivateRoute exact path="/create" component={CreateCocktail} />
         <PrivateRoute exact path="/cart" component={CartPage} />
         <PrivateRoute exact path="/cocktails/:cocktailId" component={CocktailsDetailsPage} />
 

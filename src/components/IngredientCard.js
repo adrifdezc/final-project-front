@@ -25,6 +25,7 @@ function IngredientCard({ ingredient, getIngredients }) {
 
   useEffect(() => {
     getIngredients();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
