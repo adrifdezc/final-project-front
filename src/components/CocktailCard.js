@@ -1,11 +1,10 @@
 import React from "react";
 import Button from "@restart/ui/esm/Button";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "./../context/auth.context";
 import { useContext } from "react";
 import FavButton from "./FavButton/FavButton";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SeeDetailsButton from "./SeeDetailsButton/SeeDetailsButton";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -20,7 +19,7 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
     axios({
       method: "POST",
       url: `${API_URL}/add-favorite`,
-      data: { cocktail: cocktail, user: user },
+      data: { cocktail: cocktail, user: user},
     })
       .then((result) => {
         console.log(`Result: `, result);

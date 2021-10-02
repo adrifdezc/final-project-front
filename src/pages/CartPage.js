@@ -1,62 +1,56 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import {AuthContext} from "./../context/auth.context";
-import {useContext} from "react";
-import Button from "@restart/ui/esm/Button"
+import { AuthContext } from "./../context/auth.context";
+import { useContext } from "react";
+import IngredientCard from "../components/IngredientCard";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function CartPage() {
   const { user } = useContext(AuthContext);
 
-  const [ingredient, setIngredient] = useState([]);
+  const [ingredients, setIngredient] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
-  const getAllIngredients = () =>{
+
+  const getAllIngredients = () => {
     const storedToken = localStorage.getItem("authToken");
-    
+
     axios({
       method: "post",
       url: `${API_URL}/cart`,
       data: { user: user },
       headers: { Authorization: `Bearer ${storedToken}` },
     })
-    .then((response)=>{
-      console.log("GetALLING", response)
-      setIngredient(response.data.shopping)
-      setIsLoading(false)
-    })
-    .catch((error)=> console.log(error))
+      .then((response) => {
+        console.log("GetALLING", response);
+        setIngredient(response.data.shopping);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
   };
-  const handleDelete = () =>{
-    axios({
-      method: "POST",
-      url: `${API_URL}/delete-cart`,
-      data: {ingredient: ingredient, user:user}
-    })
-    .then((result)=>console.log(result))
-  }
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllIngredients();
-  }, [])
+  }, []);
 
-  return(
-    isLoading ? <p> Loading...</p> :
-    <div className="Profile">
+  return isLoading ? (
+    <p> Loading...</p>
+  ) : (
+    <div className="Profile m-5">
       <h1>SHOPPING CART</h1>
-      <section>
-        {ingredient?.map((ingredient)=>(
-          <>
-          <h1>{ingredient.strIngredient}</h1><Button onClick = {handleDelete}><i class="fa fa-trash-o"></i></Button>
-        </>
-        ))}
+      <section className="container-fluid">
+        <div className="row">
+          {ingredients?.map((ingredient) => (
+            <IngredientCard
+              key={ingredient.idIngredient}
+              ingredient={ingredient}
+              getIngredients={getAllIngredients}
+            />
+          ))}
+        </div>
       </section>
     </div>
-  )
-
-
-
-  }
+  );
+}
 
 export default CartPage;
