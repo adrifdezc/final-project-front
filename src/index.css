@@ -24,8 +24,10 @@ label {
   display: block;
 }
 
-input,
-textarea {
+.SignupPage > input,
+.SignupPage> textarea,
+.LoginPage > input,
+.LoginPage > textarea {
   display: block;
   padding: 10px;
   font-size: 20px;

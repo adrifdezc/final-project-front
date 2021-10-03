@@ -8,9 +8,23 @@ html,
 body {
   height: 100vh;
   color: #fff;
-font-family: 'Stick No Bills', sans-serif!important;
+  font-family: "Cairo", sans-serif !important;
+  scroll-behavior: smooth;
 }
 
+.navbar {
+  background-color: transparent;
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.226);
+}
+
+.News > img {
+  height: 300px;
+  object-fit: scale-down;
+}
+
+#Services {
+  padding-top: 120px !important;
+}
 a {
   text-decoration: none !important;
   color: inherit !important;
@@ -23,7 +37,19 @@ a {
 }
 .me-auto {
   align-items: center;
-  padding-left: 40% !important;
+  margin-left: 30px;
+  color: #303030e3;
+  /* background-color: #fff; */
+}
+.me-auto > Link:hover,
+.me-auto > a:hover,
+.User > a:hover,
+.User > Button:hover {
+  color: #ffaf04 !important;
+}
+.User,
+.User > Button {
+  color: #303030e3;
 }
 
 .container {
@@ -31,13 +57,26 @@ a {
   margin: 0px !important;
   padding: 0 20px;
 }
-.Form > input, .Form > textarea{
-  border: 1px solid grey!important;
+
+.container-form {
 }
-.container-form{
+
+.Form > input,
+.Form > textarea {
+  border: 1px solid transparent !important;
+  width: 50%;
+}
+
+.Form {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  align-items: center;
-  margin-left: 40px;
+  box-shadow: 0px 0px 10px grey;
+}
+
+.Form > button {
+  width: 150px !important;
 }
 
 .btn {
@@ -73,7 +112,10 @@ header img {
   margin-left: 28%;
 }
 
-input[type="text"] {
+.SignupPage input[type="text"],
+.SignupPage input[type="password"],
+.LoginPage input[type="text"],
+.LoginPage input[type="password"] {
   display: block;
   padding: 10px;
   text-align: center;
@@ -104,8 +146,8 @@ input[type="text"] {
 }
 
 .form-control {
-  border: 1px !important;
-  border-color: #ffaf04 !important;
+  width: 400px !important;
+  text-align: center;
 }
 
 .cards {

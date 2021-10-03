@@ -55,7 +55,7 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
         <div className="card">
           <img src={cocktail.strDrinkThumb} alt="" />
           <h5 className="text-center">{cocktail.strDrink}</h5>
-          <div className="row">
+          <div className="row text-center">
             {!seeDetails ? (
               <>
                 <div className="col-6">

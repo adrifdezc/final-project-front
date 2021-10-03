@@ -3,6 +3,7 @@ import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "./../context/auth.context"; // <== IMPORT
 import { Container, Nav, Navbar } from "react-bootstrap";
 import Logo from "./Landing/Logo.png";
+
 function NavbarComp() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
@@ -10,7 +11,7 @@ function NavbarComp() {
 
   return (
     <div className="App">
-      <Navbar className="navbar" bg="dark" expand="lg">
+      <Navbar className="navbar" expand="lg">
         <Container>
           <Link to="/">
             <Navbar.Brand>
@@ -23,18 +24,32 @@ function NavbarComp() {
             {isLoggedIn ? (
               <>
                 <Nav className="me-auto">
-                  <Link to="/cocktails">Cocktails</Link>
+                    <>
+                      <a href="#Services">Services</a>
+                      <a href="#About">About</a>
+                      <a href="#Contact">Contact</a>
+                    </>
+                    <>
+                      <Link k to="/cocktails">
+                        Cocktails
+                      </Link>
+                      <Link to="/create">Create Yours</Link>
+                    </>
+                  
                 </Nav>
-                <Link to="/profile">
-                  {" "}
-                  <span>{user.name}</span>
-                </Link>
-                <Link to="/cart">
-                  <i className="fa fa-shopping-cart"></i>
-                </Link>
-                <button className="logout" onClick={logOutUser}>
-                  | {"\u00A0"} Logout
-                </button>
+                <div className="User">
+                  <Link to="/profile">
+                    {" "}
+                    <span>{user.name}</span>
+                  </Link>
+                  <Link to="/cart">
+                    <i className="fa fa-shopping-cart"></i>
+                  </Link>
+                  {"\u00A0"}|
+                  <button className="logout" onClick={logOutUser}>
+                    Logout
+                  </button>
+                </div>
               </>
             ) : (
               <>

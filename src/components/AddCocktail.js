@@ -35,6 +35,7 @@ function AddCocktail() {
         <form className="Form" onSubmit={handleSubmit}>
           <label>Name:</label>
           <input
+            className="shadow py-3 "
             type="text"
             placeholder="Cocktail's Name"
             name="name"
@@ -44,6 +45,7 @@ function AddCocktail() {
 
           <label>Category:</label>
           <input
+            className="shadow py-3 "
             type="text"
             placeholder="Shot/Cocktail"
             name="category"
@@ -52,6 +54,7 @@ function AddCocktail() {
           />
           <label>Alcohol:</label>
           <input
+            className="shadow py-3 "
             type="text"
             placeholder="Yes/No"
             name="alocoholic"
@@ -61,6 +64,7 @@ function AddCocktail() {
 
           <label>Instructions:</label>
           <textarea
+            className="shadow py-3 "
             type="text"
             placeholder="Write here the steps to follow"
             name="instructions"
@@ -68,7 +72,7 @@ function AddCocktail() {
             onChange={(e) => setstrInstructions(e.target.value)}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit">Create</button>
         </form>
       </div>
     );
