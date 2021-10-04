@@ -24,7 +24,7 @@ function ProfilePage() {
       .then((response) => {
         console.log(response);
         setCocktails(response.data.favorites);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
@@ -33,20 +33,21 @@ function ProfilePage() {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    isLoading ? <p>Loading..</p> : 
+  return isLoading ? (
+    <p>Loading..</p>
+  ) : (
     <div className="Profile">
       <h1>Profile Page</h1>
       <section className="cards" id="search">
-                      <div className="row">
-
-        {cocktails?.map((cocktail) => (
-          <CocktailCard
-            loadingPage={"profile"}
-            key={cocktail.idDrink}
-            cocktail={cocktail}
-            getCocktails = {getAllCocktails}  />
-        ))}
+        <div className="row">
+          {cocktails?.map((cocktail) => (
+            <CocktailCard
+              loadingPage={"profile"}
+              key={cocktail.idDrink}
+              cocktail={cocktail}
+              getCocktails={getAllCocktails}
+            />
+          ))}
         </div>
       </section>
     </div>

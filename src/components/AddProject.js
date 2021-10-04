@@ -7,21 +7,18 @@ function AddProject(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { title, description };
 
     // Get the token from the localStorage
-    const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem("authToken");
 
     // Send the token through the request "Authorization" Headers
     axios
-      .post(
-        `${API_URL}/projects`,
-        requestBody,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
+      .post(`${API_URL}/projects`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         // Reset the state
         setTitle("");
@@ -30,7 +27,6 @@ function AddProject(props) {
       })
       .catch((error) => console.log(error));
   };
-
 
   return (
     <div className="AddProject">

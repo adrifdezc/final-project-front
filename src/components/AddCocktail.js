@@ -43,10 +43,10 @@ function AddCocktail() {
       .get(`${API_URL}/create-cocktail`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) =>{ 
-        console.log("COCKTAIL ARRAY", response.data)
-      setCocktail(response.data)
-    })
+      .then((response) => {
+        console.log("COCKTAIL ARRAY", response.data);
+        setCocktail(response.data);
+      })
       .catch((error) => console.log(error));
   };
 

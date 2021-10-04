@@ -6,7 +6,6 @@ import { useContext } from "react";
 import Button from "@restart/ui/esm/Button";
 import FavButton from "../components/FavButton/FavButton";
 
-
 const API_URL = process.env.REACT_APP_API_URL;
 
 const getById = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
@@ -19,7 +18,6 @@ function CocktailsDetailsPage(props) {
   const cocktailId = props.match.params.cocktailId;
   const [loading, setLoading] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
-
 
   const getCocktail = () => {
     axios
@@ -44,24 +42,24 @@ function CocktailsDetailsPage(props) {
       })
       .catch((error) => console.log(error));
   };
-  
+
   useEffect(() => {
     getCocktail();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(()=>{
-    if (userData && userData.favorites && cocktail){
-      const foundCocktail = userData.favorites.find((favorite)=>{
-        return favorite.idDrink === cocktail.idDrink
-      })
-      if (foundCocktail){
+  useEffect(() => {
+    if (userData && userData.favorites && cocktail) {
+      const foundCocktail = userData.favorites.find((favorite) => {
+        return favorite.idDrink === cocktail.idDrink;
+      });
+      if (foundCocktail) {
         setIsClicked(true);
-      }else{
-        setIsClicked(false)
+      } else {
+        setIsClicked(false);
       }
-      console.log("Found", foundCocktail)
+      console.log("Found", foundCocktail);
     }
-  },[userData, cocktail])
+  }, [userData, cocktail]);
 
   const handleCart = (ingredient) => {
     axios
@@ -164,9 +162,8 @@ function CocktailsDetailsPage(props) {
           </Link>
 
           <Button onClick={handleSubmit}>
-            <FavButton isClicked={isClicked}  />
+            <FavButton isClicked={isClicked} />
           </Button>
-          
         </div>
       )}
     </div>

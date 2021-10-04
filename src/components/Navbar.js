@@ -4,7 +4,8 @@ import { AuthContext } from "./../context/auth.context"; // <== IMPORT
 import { Container, Nav, Navbar } from "react-bootstrap";
 import Logo from "./Landing/Logo.png";
 
-function NavbarComp() {
+function NavbarComp(props) {
+  console.log("PROPS", props);
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -24,19 +25,17 @@ function NavbarComp() {
             {isLoggedIn ? (
               <>
                 <Nav className="me-auto">
-                  {window.location.pathname !== "/" ? null:
+                  {window.location.pathname !== "/" ? null : (
                     <>
                       <a href="#Services">Services</a>
                       <a href="#Articles">Articles</a>
                       <a href="#Contact">Contact</a>
-                    </>}
-                    <>
-                      <Link to="/cocktails">
-                        Cocktails
-                      </Link>
-                      <Link to="/create">Create Yours</Link>
                     </>
-                  
+                  )}
+                  <>
+                    <Link to="/cocktails">Cocktails</Link>
+                    <Link to="/create">Create Yours</Link>
+                  </>
                 </Nav>
                 <div className="User">
                   <Link to="/profile">

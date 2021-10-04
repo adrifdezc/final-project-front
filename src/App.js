@@ -20,17 +20,20 @@ function App() {
 
   return (
     <div className="App">
-      <NavbarComp/>
-
+        <Route component={NavbarComp} />
       <Switch>
         <Route exact path="/" component={LandingPage} />
 
         {/* 👇 UPDATE THE EXISTING ROUTES 👇  */}
-        <PrivateRoute exact path="/cocktails" component={CocktailsPage}  />
+        <PrivateRoute exact path="/cocktails" component={CocktailsPage} />
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <PrivateRoute exact path="/create" component={CreateCocktail} />
         <PrivateRoute exact path="/cart" component={CartPage} />
-        <PrivateRoute exact path="/cocktails/:cocktailId" component={CocktailsDetailsPage} />
+        <PrivateRoute
+          exact
+          path="/cocktails/:cocktailId"
+          component={CocktailsDetailsPage}
+        />
 
         <AnonRoute exact path="/signup" component={SignupPage} />
         <AnonRoute exact path="/login" component={LoginPage} />
