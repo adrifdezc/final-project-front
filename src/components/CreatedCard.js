@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function CreatedCard({cocktail}) {
+    
     return (
         <>
-            {/* {cocktail?.map((oneCocktail)=> (
+        {cocktail ?
+            cocktail?.map((oneCocktail)=> (
                 <>
                 <h1>{oneCocktail.strDrink}</h1>
                 </>
             ))
-            } */}
+            
+            :null
+        }
         </>
     )
 }

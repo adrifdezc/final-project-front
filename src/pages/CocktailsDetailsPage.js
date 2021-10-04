@@ -20,6 +20,7 @@ function CocktailsDetailsPage(props) {
   const [loading, setLoading] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
 
+
   const getCocktail = () => {
     axios
       .get(`${getById}${cocktailId}`)
@@ -43,17 +44,14 @@ function CocktailsDetailsPage(props) {
       })
       .catch((error) => console.log(error));
   };
+  
   useEffect(() => {
     getCocktail();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(()=>{
-    debugger
     if (userData && userData.favorites && cocktail){
-      debugger
       const foundCocktail = userData.favorites.find((favorite)=>{
-        
-        debugger
         return favorite.idDrink === cocktail.idDrink
       })
       if (foundCocktail){
@@ -168,6 +166,7 @@ function CocktailsDetailsPage(props) {
           <Button onClick={handleSubmit}>
             <FavButton isClicked={isClicked}  />
           </Button>
+          
         </div>
       )}
     </div>

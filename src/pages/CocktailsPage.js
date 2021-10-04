@@ -2,13 +2,36 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CocktailCard from "../components/CocktailCard";
 import Search from "../components/Search";
+import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
 
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 
 function CocktailsPage() {
+    const { user } = useContext(AuthContext);
+
   const [cocktails, setCocktails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState("");
+
+  const getAllCocktails = () => {
+    const storedToken = localStorage.getItem("authToken");
+
+    axios({
+      method: "POST",
+      url: `${API_URL}/profile`,
+      data: { user: user },
+      headers: { Authorization: `Bearer ${storedToken}` },
+    })
+      .then((response) => {
+        console.log(response);
+        setCocktails(response.data.favorites);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
     const fetchCocktails = async () => {
@@ -29,7 +52,6 @@ function CocktailsPage() {
           loadingPage={"cocktailList"}
           key={cocktail.idDrink}
           cocktail={cocktail}
-          {...cocktail}
         ></CocktailCard>
       )
   );

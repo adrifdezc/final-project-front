@@ -1,12 +1,17 @@
 import React from "react";
+import Button from "@restart/ui/esm/Button";
 
-function FavButton({ isClicked }) {
+function FavButton({ isClicked, handleDelete, handleSubmit }) {
   return (
     <>
       {isClicked ? (
+        <Button onClick={handleDelete}>
         <i className="fa fa-heart text-danger"></i>
+        </Button>
       ) : (
-        <i className="fa fa-heart-o"></i>
+        <Button onClick={handleSubmit}>     
+          <i className="fa fa-heart-o"></i>
+        </Button>
       )}
     </>
   );

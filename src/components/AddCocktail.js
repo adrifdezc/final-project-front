@@ -1,105 +1,113 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import React from 'react'
+import React from "react";
 import CreatedCard from "./CreatedCard";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-
 function AddCocktail() {
-    const [cocktail, setCocktail] = useState("")
-    const [strDrink, setStrDrink] = useState("")
-    const [strCategory, setStrCategory] = useState("")
-    const [strAlcoholic, setStrAlcoholic] = useState("")
-    const [strInstructions, setstrInstructions] = useState("")
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const requestBody = {strDrink, strCategory, strAlcoholic, strInstructions}
-        
-        const storedToken = localStorage.getItem("authToken");
+  const [cocktail, setCocktail] = useState("");
+  const [strDrink, setStrDrink] = useState("");
+  const [strCategory, setStrCategory] = useState("");
+  const [strAlcoholic, setStrAlcoholic] = useState("");
+  const [strInstructions, setstrInstructions] = useState("");
 
-        axios.post(`${API_URL}/create`, requestBody, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then((response)=>{
-          console.log(response)
-            setStrDrink(response.data.strDrink);
-            setStrCategory(response.data.strCategory);
-            setStrAlcoholic(response.data.strAlcoholic);
-            setstrInstructions(response.data.strInstructions)
-        })
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = {
+      strDrink,
+      strCategory,
+      strAlcoholic,
+      strInstructions,
+    };
 
-    const getCreated = () => {
-        const storedToken = localStorage.getItem("authToken");
+    const storedToken = localStorage.getItem("authToken");
 
-        axios.get(`${API_URL}/create`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then((response)=>setCocktail(response.data))
-        .catch((error)=> console.log(error))
-    }
+    axios
+      .post(`${API_URL}/create-cocktail`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log(response);
+        setStrDrink(response.data.strDrink);
+        setStrCategory(response.data.strCategory);
+        setStrAlcoholic(response.data.strAlcoholic);
+        setstrInstructions(response.data.strInstructions);
+      });
+  };
 
-    useEffect(()=>{
-      getCreated()
-    },[])
-  
+  const getCreated = () => {
+    const storedToken = localStorage.getItem("authToken");
 
-    return (
-      <div className="container-form">
-        <div className="row">
-          <div className="col-6">
-            <h3>Add Cocktail </h3>
-            <form className="Form" onSubmit={handleSubmit}>
-              <label>Name:</label>
-              <input
-                className="shadow py-3 "
-                type="text"
-                placeholder="Cocktail's Name"
-                name="name"
-                value={strDrink}
-                onChange={(e) => setStrDrink(e.target.value)}
-              />
+    axios
+      .get(`${API_URL}/create-cocktail`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) =>{ 
+        console.log("COCKTAIL ARRAY", response.data)
+      setCocktail(response.data)
+    })
+      .catch((error) => console.log(error));
+  };
 
-              <label>Category:</label>
-              <input
-                className="shadow py-3 "
-                type="text"
-                placeholder="Shot/Cocktail"
-                name="category"
-                value={strCategory}
-                onChange={(e) => setStrCategory(e.target.value)}
-              />
-              <label>Alcohol:</label>
-              <input
-                className="shadow py-3 "
-                type="text"
-                placeholder="Yes/No"
-                name="alocoholic"
-                value={strAlcoholic}
-                onChange={(e) => setStrAlcoholic(e.target.value)}
-              />
+  useEffect(() => {
+    getCreated();
+  }, []);
 
-              <label>Instructions:</label>
-              <textarea
-                className="shadow py-3 "
-                type="text"
-                placeholder="Write here the steps to follow"
-                name="instructions"
-                value={strInstructions}
-                onChange={(e) => setstrInstructions(e.target.value)}
-              />
+  return (
+    <div className="container-form">
+      <div className="row">
+        <div className="col-6">
+          <h3>Add Cocktail </h3>
+          <form className="Form" onSubmit={handleSubmit}>
+            <label>Name:</label>
+            <input
+              className="shadow py-3 "
+              type="text"
+              placeholder="Cocktail's Name"
+              name="name"
+              value={strDrink}
+              onChange={(e) => setStrDrink(e.target.value)}
+            />
 
-              <button type="submit">Create</button>
-            </form>
-          </div>
-          <div className="col-6">
-            <CreatedCard cocktail={cocktail} />
-          </div>
+            <label>Category:</label>
+            <input
+              className="shadow py-3 "
+              type="text"
+              placeholder="Shot/Cocktail"
+              name="category"
+              value={strCategory}
+              onChange={(e) => setStrCategory(e.target.value)}
+            />
+            <label>Alcohol:</label>
+            <input
+              className="shadow py-3 "
+              type="text"
+              placeholder="Yes/No"
+              name="alocoholic"
+              value={strAlcoholic}
+              onChange={(e) => setStrAlcoholic(e.target.value)}
+            />
+
+            <label>Instructions:</label>
+            <textarea
+              className="shadow py-3 "
+              type="text"
+              placeholder="Write here the steps to follow"
+              name="instructions"
+              value={strInstructions}
+              onChange={(e) => setstrInstructions(e.target.value)}
+            />
+
+            <button type="submit">Create</button>
+          </form>
+        </div>
+        <div className="col-6">
+          <CreatedCard cocktail={cocktail} />
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
-export default AddCocktail
+export default AddCocktail;
