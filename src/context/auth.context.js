@@ -74,7 +74,7 @@ function AuthProviderWrapper(props) {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, logInUser, logOutUser, userData }}
+      value={{ isLoggedIn, isLoading, user, logInUser, logOutUser, userData, setUserData }}
     >
       {props.children}
     </AuthContext.Provider>

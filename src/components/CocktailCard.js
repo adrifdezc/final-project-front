@@ -10,7 +10,7 @@ import SeeDetailsButton from "./SeeDetailsButton/SeeDetailsButton";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
-  const { user, userData } = useContext(AuthContext);
+  const { user, userData, setUserData } = useContext(AuthContext);
 
   const [isClicked, setIsClicked] = useState(false);
   const [seeDetails, setSeeDetails] = useState(false);
@@ -23,6 +23,7 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
     })
       .then((result) => {
         console.log(`Result: `, result);
+        setUserData(result.data);
         setIsClicked(true);
       })
       .catch((error) => console.log(error));
@@ -37,6 +38,7 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
     })
       .then((result) => {
         console.log(`Result2: `, result);
+        setUserData(result.data);
         setIsClicked(false)
         getCocktails();
       })
@@ -51,17 +53,15 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
     }
   };
   useEffect(() => {
-    debugger;
+    console.log("USERDATA:", userData)
     if (userData && userData.favorites && cocktail) {
-      debugger;
-      const foundCocktail = userData.favorites.find((favorite) => {
-        debugger;
+      const foundCocktail = userData.favorites.filter((favorite) => {
         return favorite.idDrink === cocktail.idDrink;
       });
-      if (foundCocktail) {
-        setIsClicked(true);
-      } else {
+      if (foundCocktail.length===0) {
         setIsClicked(false);
+      } else {
+        setIsClicked(true);
       }
       console.log("Found", foundCocktail);
     }
