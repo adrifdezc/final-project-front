@@ -24,13 +24,14 @@ function NavbarComp() {
             {isLoggedIn ? (
               <>
                 <Nav className="me-auto">
+                  {window.location.pathname !== "/" ? null:
                     <>
                       <a href="#Services">Services</a>
-                      <a href="#About">About</a>
+                      <a href="#Articles">Articles</a>
                       <a href="#Contact">Contact</a>
-                    </>
+                    </>}
                     <>
-                      <Link k to="/cocktails">
+                      <Link to="/cocktails">
                         Cocktails
                       </Link>
                       <Link to="/create">Create Yours</Link>

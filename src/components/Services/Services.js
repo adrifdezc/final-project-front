@@ -1,9 +1,8 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import ServicesCard from './ServicesCard'
 import SearchIMG from "./img/SearchIMG.png";
 import CreateIMG from "./img/CreateIMG.png";
 import CartIMG from "./img/CartIMG.png";
-import { Link } from "react-router-dom";
 
 
 

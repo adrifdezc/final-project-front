@@ -14,7 +14,6 @@ import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./components/PrivateRoute"; // <== IMPORT
 import AnonRoute from "./components/AnonRoute"; // <== IMPORT
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
 
 function App() {
 
@@ -32,17 +31,6 @@ function App() {
         <PrivateRoute exact path="/create" component={CreateCocktail} />
         <PrivateRoute exact path="/cart" component={CartPage} />
         <PrivateRoute exact path="/cocktails/:cocktailId" component={CocktailsDetailsPage} />
-
-        {/* <PrivateRoute
-          exact
-          path="/projects/:id"
-          component={ProjectDetailsPage}
-        />
-        <PrivateRoute
-          exact
-          path="/projects/edit/:id"
-          component={EditProjectPage}
-        /> */}
 
         <AnonRoute exact path="/signup" component={SignupPage} />
         <AnonRoute exact path="/login" component={LoginPage} />

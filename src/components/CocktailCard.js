@@ -51,7 +51,7 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
 
   return (
     <>
-      <div className="col-lg-2 col-sm-4">
+      <div className="col-lg-3 col-sm-4">
         <div className="card">
           <img src={cocktail.strDrinkThumb} alt="" />
           <h5 className="text-center">{cocktail.strDrink}</h5>

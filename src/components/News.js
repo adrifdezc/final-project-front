@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL;
 
 function News() {
-  const storedToken = localStorage.getItem("authToken");
   const [news, setNews] = useState();
 
 //   const options = {
@@ -44,25 +42,23 @@ const options = {
     const fetchNews = async () => {
       const response = await axios(options);
 
-      setNews(response.data.data.results)
-      console.log("Data", response.data.value);
+      setNews(response.data.data.results);
     };
     fetchNews();
+    // eslint-disable-next-line
   },[]);
 
   return (
     <div className="text-center">
     <h1>Latest news</h1>
-    <div className="row m-5">
-      {news?.map((article)=>(
-          <>
-        <div className="card News col-6 ">
-            <img src={article.image} alt=""/>
+    <div className="row News-row pb-5 m-5">
+      {news?.map((article,index)=>(
+        <div key={index} className="card News shadow col-5 ">
+            <img className="p-3" src={article.image} alt=""/>
             <h4>{article.title}</h4>
             <h6>{article.description}</h6>
             <a href={article.url}> <h3>Read More</h3> </a>
         </div>
-        </>
       ))}
     </div>
     </div>

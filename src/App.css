@@ -21,6 +21,13 @@ body {
   height: 300px;
   object-fit: scale-down;
 }
+.News{
+  justify-content: space-evenly;
+}
+
+.News-row{
+  justify-content: space-around;
+}
 
 #Services {
   padding-top: 120px !important;

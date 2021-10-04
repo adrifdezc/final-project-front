@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Landing from "../components/Landing/Landing";
 import News from "../components/News";
 import Services from "../components/Services/Services";
@@ -12,7 +11,7 @@ function LandingPage() {
       <Services />
       <button><a href="#Top">Back to the top</a></button>
       </section>
-      <section className="m-5">
+      <section id="Articles" className="m-5">
         <div className="container-fluid">
         <News/>
         </div>
