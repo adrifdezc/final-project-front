@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import CreatedCard from "./CreatedCard";
-
+import Landing from "./Landing/Landing"
 const API_URL = process.env.REACT_APP_API_URL;
 
 function AddCocktail() {
@@ -56,9 +56,9 @@ function AddCocktail() {
 
   return (
     <div className="container-form">
-      <div className="row">
-        <div className="col-6">
-          <h3>Add Cocktail </h3>
+        <Landing />
+      <div className="row justify-content-center pt-5">
+          <h1 className="Share-header">SHARE WITH THE COMMUNITY YOUR FAVORITE COCKTAIL </h1>
           <form className="Form" onSubmit={handleSubmit}>
             <label>Name:</label>
             <input
@@ -102,11 +102,11 @@ function AddCocktail() {
             <button type="submit">Create</button>
           </form>
         </div>
-        <div className="col-6">
+        <div className="Friends row my-5 pt-5 justify-content-center">
+          <h1>OUR FRIENDS' RECIPES</h1>
           <CreatedCard cocktail={cocktail} />
         </div>
       </div>
-    </div>
   );
 }
 
