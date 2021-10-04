@@ -42,6 +42,7 @@ function NavbarComp() {
                   <Link to="/profile">
                     {" "}
                     <span>{user.name}</span>
+                    {console.log(user)}
                   </Link>
                   <Link to="/cart">
                     <i className="fa fa-shopping-cart"></i>

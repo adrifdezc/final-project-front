@@ -3,6 +3,8 @@ import axios from "axios";
 import CocktailCard from "../components/CocktailCard";
 import Search from "../components/Search";
 
+
+
 function CocktailsPage() {
   const [cocktails, setCocktails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
