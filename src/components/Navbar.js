@@ -45,6 +45,10 @@ function NavbarComp(props) {
                   </Link>
                   <Link to="/cart">
                     <i className="fa fa-shopping-cart"></i>
+                    <span class="badge badge-warning" id="lblCartCount">
+                      {" "}
+                      {user.name.length}{" "}
+                    </span>
                   </Link>
                   {"\u00A0"}|
                   <button className="logout" onClick={logOutUser}>

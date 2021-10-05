@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import CreatedCard from "./CreatedCard";
-import Landing from "./Landing/Landing"
+import Landing from "./Landing/Landing";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function AddCocktail() {
@@ -56,11 +56,11 @@ function AddCocktail() {
 
   return (
     <div className="container-form">
-        <Landing />
-      <div className="row justify-content-center pt-5">
-          <h1 className="Share-header">SHARE WITH THE COMMUNITY YOUR FAVORITE COCKTAIL </h1>
+      <Landing />
+      <div className="row align-items-center pt-5">
+        <div className="col-7">
           <form className="Form" onSubmit={handleSubmit}>
-            <label>Name:</label>
+            <h4>YOUR CREATION GOES HERE:</h4>
             <input
               className="shadow py-3 "
               type="text"
@@ -70,7 +70,6 @@ function AddCocktail() {
               onChange={(e) => setStrDrink(e.target.value)}
             />
 
-            <label>Category:</label>
             <input
               className="shadow py-3 "
               type="text"
@@ -79,7 +78,6 @@ function AddCocktail() {
               value={strCategory}
               onChange={(e) => setStrCategory(e.target.value)}
             />
-            <label>Alcohol:</label>
             <input
               className="shadow py-3 "
               type="text"
@@ -89,7 +87,6 @@ function AddCocktail() {
               onChange={(e) => setStrAlcoholic(e.target.value)}
             />
 
-            <label>Instructions:</label>
             <textarea
               className="shadow py-3 "
               type="text"
@@ -102,11 +99,15 @@ function AddCocktail() {
             <button type="submit">Create</button>
           </form>
         </div>
-        <div className="Friends row my-5 pt-5 justify-content-center">
-          <h1>OUR FRIENDS' RECIPES</h1>
-          <CreatedCard cocktail={cocktail} />
+        <div className="Share-header col-5">
+           <i>SHARE YOUR FAVORITE COCKTAIL WITH THE COMMUNITY</i> 
         </div>
       </div>
+      <div className="Friends row my-5 pt-5 justify-content-center">
+        <h1>OUR FRIENDS' RECIPES</h1>
+        <CreatedCard cocktail={cocktail} />
+      </div>
+    </div>
   );
 }
 
