@@ -53,7 +53,6 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
     }
   };
   useEffect(() => {
-    console.log("USERDATA:", userData)
     if (userData && userData.favorites && cocktail) {
       const foundCocktail = userData.favorites.filter((favorite) => {
         return favorite.idDrink === cocktail.idDrink;
@@ -63,7 +62,6 @@ const CocktailCard = ({ cocktail, loadingPage, getCocktails }) => {
       } else {
         setIsClicked(true);
       }
-      console.log("Found", foundCocktail);
     }
   }, [userData, cocktail]);
 

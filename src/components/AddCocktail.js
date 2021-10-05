@@ -28,14 +28,13 @@ function AddCocktail() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log(response);
-        setStrDrink(response.data.strDrink);
-        setStrCategory(response.data.strCategory);
-        setStrAlcoholic(response.data.strAlcoholic);
-        setstrInstructions(response.data.strInstructions);
+        setCocktail([...cocktail, response.data])
+        setStrDrink("");
+        setStrCategory("");
+        setStrAlcoholic("");
+        setstrInstructions("");
       });
   };
-
   const getCreated = () => {
     const storedToken = localStorage.getItem("authToken");
 
@@ -49,6 +48,7 @@ function AddCocktail() {
       })
       .catch((error) => console.log(error));
   };
+
 
   useEffect(() => {
     getCreated();
@@ -105,7 +105,7 @@ function AddCocktail() {
       </div>
       <div className="Friends row my-5 pt-5 justify-content-center">
         <h1>OUR FRIENDS' RECIPES</h1>
-        <CreatedCard cocktail={cocktail} />
+        <CreatedCard cocktailList={cocktail} setCocktailList={setCocktail} />
       </div>
     </div>
   );

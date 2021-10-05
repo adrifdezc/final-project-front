@@ -12,9 +12,7 @@ function LandingPage() {
       <button><a href="#Top">Back to the top</a></button>
       </section>
       <section id="Articles" className="m-5">
-        <div className="container-fluid">
         <News/>
-        </div>
       </section>
     </div>
   );

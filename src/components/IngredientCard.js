@@ -54,18 +54,15 @@ function IngredientCard({ ingredient, getIngredients }) {
   }, []);
   return (
     <>
-      <div className="col-12">
-        {search?.map((oneSearch)=>(
-            <>
-            <li>{oneSearch.title}| <a className="text-primary" href={oneSearch.link}> See Website </a></li>
-            </>
-        ))}
-        <div className="card col-2">
+      <div className="">
+        <div className="card col-6">
           <img
             src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}-Small.png`}
             alt={ingredient.strIngredient}
+            style={{width:"100px"}}
           />
           <h4>{ingredient.strIngredient}</h4>
+          <p style={{fontSize:"10px"}}>{ingredient.strDescription}</p>
           <div className="row align-items-center">
             <Button onClick={handleDelete}>
               <i className="fa fa-trash-o"></i>
@@ -75,6 +72,11 @@ function IngredientCard({ ingredient, getIngredients }) {
             </Button>
           </div>
         </div>
+        {search?.map((oneSearch)=>(
+            <>
+            <li>{oneSearch.title}| <a className="text-primary" href={oneSearch.link}> See Website </a></li>
+            </>
+        ))}
       </div>
     </>
   );

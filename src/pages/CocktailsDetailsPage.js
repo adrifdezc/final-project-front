@@ -57,7 +57,6 @@ function CocktailsDetailsPage(props) {
       } else {
         setIsClicked(false);
       }
-      console.log("Found", foundCocktail);
     }
   }, [userData, cocktail]);
 

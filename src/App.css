@@ -131,7 +131,15 @@ a {
     margin-left: -5px; 
 }
 
+#Articles{
+padding: 0px 200px 200px 200px;
+}
+#Articles img{
+  height: 500px;
+  object-fit:cover;
+  filter:brightness(0.5);
 
+}
 
 .Form > button {
   width: 150px !important;

@@ -39,7 +39,7 @@ function CartPage() {
     <p> Loading...</p>
   ) : (
     <div className="Profile m-5">
-      <div className="col-6">
+      <div className="">
       <h1>SHOPPING CART</h1>
       <section className="container-fluid">
           {ingredients?.map((ingredient) => (
@@ -51,7 +51,7 @@ function CartPage() {
           ))}
       </section>
       </div>
-      <div className="col-6">
+      <div className="">
       </div>
     </div>
   );
