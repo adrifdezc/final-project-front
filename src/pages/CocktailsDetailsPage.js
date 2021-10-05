@@ -11,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 const getById = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
 function CocktailsDetailsPage(props) {
-  const { user, userData } = useContext(AuthContext);
+  const { user, userData, setUserData } = useContext(AuthContext);
   const storedToken = localStorage.getItem("authToken");
 
   const [cocktail, setCocktail] = useState(null);
@@ -67,13 +67,15 @@ function CocktailsDetailsPage(props) {
         `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`
       )
       .then((response) => {
-        console.log(response.data.ingredients[0]);
         axios({
           method: "POST",
           url: `${API_URL}/add-ingredient`,
           data: response.data.ingredients[0],
           headers: { Authorization: `Bearer ${storedToken}` },
-        }).then((response) => console.log(response));
+        })
+        .then((response) => {
+        setUserData(response.data)
+          });
       });
   };
 

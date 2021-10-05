@@ -3,12 +3,14 @@ import axios from "axios";
 import { AuthContext } from "./../context/auth.context";
 import { useContext } from "react";
 import Button from "@restart/ui/esm/Button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function IngredientCard({ ingredient, getIngredients }) {
-  const { user } = useContext(AuthContext);
+  const { user, setUserData } = useContext(AuthContext);
+
+  const [search, setSearch] = useState();
 
   const handleDelete = () => {
     axios({
@@ -17,11 +19,34 @@ function IngredientCard({ ingredient, getIngredients }) {
       data: { ingredient: ingredient, user: user },
     })
       .then((result) => {
-        console.log(result);
+        console.log("RESULT", result);
         getIngredients();
+        setUserData(result.data);
       })
       .catch((error) => console.log(error));
   };
+
+  const handleSearch = (ingredient) =>{
+    
+    const options = {
+      method: "GET",
+      url: `https://google-search3.p.rapidapi.com/api/v1/search/q=buy+${ingredient}`,
+      headers: {
+        "x-user-agent": "desktop",
+        "x-rapidapi-host": "google-search3.p.rapidapi.com",
+        "x-rapidapi-key": "dbdd362db9msh4f2f00a32709170p14d716jsn5c5812a9557b",
+      },
+    };
+   
+      const fetchSearch = async () => {
+        const response = await axios(options);
+
+        setSearch(response.data.results);
+        console.log(response.data);
+      };
+      fetchSearch()
+  }
+  
 
   useEffect(() => {
     getIngredients();
@@ -29,20 +54,24 @@ function IngredientCard({ ingredient, getIngredients }) {
   }, []);
   return (
     <>
-      <div className="card col-2 m-2 align-items-center text-center shadow-sm py-3 mb-1 bg-white rounded">
-        <div className="row">
+      <div className="col-12">
+        {search?.map((oneSearch)=>(
+            <>
+            <li>{oneSearch.title}| <a className="text-primary" href={oneSearch.link}> See Website </a></li>
+            </>
+        ))}
+        <div className="card col-2">
           <img
             src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}-Small.png`}
             alt={ingredient.strIngredient}
           />
-        </div>
-        <div className="row align-items-center">
-          <div className="col-8">
-            <h4>{ingredient.strIngredient}</h4>
-          </div>
-          <div className="col-4">
+          <h4>{ingredient.strIngredient}</h4>
+          <div className="row align-items-center">
             <Button onClick={handleDelete}>
               <i className="fa fa-trash-o"></i>
+            </Button>
+            <Button onClick={()=>handleSearch(ingredient.strIngredient)}>
+              <i className="fa fa-list"></i>
             </Button>
           </div>
         </div>
