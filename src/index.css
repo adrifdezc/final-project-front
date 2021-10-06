@@ -9,7 +9,7 @@ a {
 
 button,
 select {
-  background-color: #ffaf04;
+  background-color: #ffd904;
   border: none;
   color: #515f7d;
   border-radius: 7px !important;
@@ -25,7 +25,7 @@ label {
 }
 
 .SignupPage > input,
-.SignupPage> textarea,
+.SignupPage > textarea,
 .LoginPage > input,
 .LoginPage > textarea {
   display: block;
@@ -41,7 +41,7 @@ label {
 nav {
   background: #515f7d;
   color: white;
-  padding: 0px 40px!important;
+  padding: 0px 40px !important;
   box-shadow: 0px 1px 2px gray;
   width: 100%;
   padding: 5px;
@@ -53,11 +53,12 @@ nav li {
   font-size: 24px;
   font-weight: 600;
 }
-.navbar-collapse{
-  justify-content: flex-end
+.navbar-collapse {
+  justify-content: flex-end;
 }
 
-.SignupPage > .card, .LoginPage > .card {
+.SignupPage > .card,
+.LoginPage > .card {
   width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;

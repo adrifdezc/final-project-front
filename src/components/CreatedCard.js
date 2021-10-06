@@ -28,7 +28,7 @@ function CreatedCard({cocktailList, setCocktailList}) {
 
     return (
         <>
-
+        {console.log(cocktailList)}
             {cocktailList ?
                 cocktailList?.map((oneCocktail)=> (
                     <div key={oneCocktail.idDrink} className="card Created-recipes shadow m-2 col-2 p-4 justify-content-between text-justify">
@@ -39,7 +39,8 @@ function CreatedCard({cocktailList, setCocktailList}) {
                         <h3><b>Instructions:</b> {oneCocktail.strInstructions}</h3>
                         </div>
                         <div className="row align-bottom">
-                        {userData.rol ==="admin" && <button onClick={()=>handleDelete(oneCocktail._id)}>Delete</button>}
+                           <h3>{oneCocktail.createdAt.substring(0, 10)}</h3> 
+                        {/* {userData.rol ==="admin" && <button onClick={()=>handleDelete(oneCocktail._id)}>Delete</button>} */}
                         </div>
                     </div>
                 ))

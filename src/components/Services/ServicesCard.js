@@ -6,7 +6,7 @@ function ServicesCard({img, title, description, link, ref}) {
         <div className="col-4">
             <Link to={link} >
           <div className="card p-3 shadow align-items-center">
-            <img src={img} alt="search" style={{ height: "120px" }} />
+            <img src={img} alt="search" style={{ height: "120px", filter: "brightness(1.5)" }} />
             <h2>{title}</h2>
             <p>{description}</p>
           </div>

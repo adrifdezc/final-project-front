@@ -10,7 +10,7 @@ function Services() {
     return (
       <>
         <h1>Welcome to CocktailDO</h1>
-        <section className="row align-items-center p-4">
+        <section id="Section" className="row align-items-center p-4">
             
           <ServicesCard
             title={"Search by Name"}

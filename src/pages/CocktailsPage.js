@@ -75,7 +75,7 @@ function CocktailsPage() {
       <Landing />
       <div className="p-3 "></div>
       <div className="Cocktail-list row p-4 justify-content-around">
-        <div className="col-3 p-4 bg-light shadow">
+        <div className="row p-4 bg-light shadow">
           <Search getQuery={(q) => setQuery(q)} />
           <p>By Ingredient</p>
           <select className="my-3" onChange={handleChange}>
@@ -84,12 +84,15 @@ function CocktailsPage() {
             </option>
             <SelectComponent />
           </select>
-          <p>By Alcohol</p>
           <form>
             <div className="row mt-3">
+              <div className="col-4">
+
+          <p>By Alcohol</p>
+              </div>
               <div
                 onChange={handleChangeAlcoholic}
-                className="col-6 form-check"
+                className="col-4 form-check"
               >
                 <input
                   className="form-check-input"
@@ -103,7 +106,7 @@ function CocktailsPage() {
               </div>
               <div
                 onChange={handleChangeAlcoholic}
-                className="col-6 form-check"
+                className="col-4 form-check"
               >
                 <input
                   className="form-check-input"
@@ -141,7 +144,7 @@ function CocktailsPage() {
             </div>
           </div> */}
         </div>
-        <div className="col-7 bg-light shadow">
+        <div className="row bg-light shadow">
           <section className="cards" id="search">
             <div className="row">
               {console.log("CocktaiLList", cocktailList)}

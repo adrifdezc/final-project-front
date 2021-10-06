@@ -33,8 +33,8 @@ function IngredientCard({ ingredient, getIngredients }) {
       url: `https://google-search3.p.rapidapi.com/api/v1/search/q=buy+${ingredient}`,
       headers: {
         "x-user-agent": "desktop",
-        "x-rapidapi-host": "google-search3.p.rapidapi.com",
-        "x-rapidapi-key": "dbdd362db9msh4f2f00a32709170p14d716jsn5c5812a9557b",
+        "x-rapidapi-host": process.env.REACT_APP_API_KEY_HOST_BUY,
+        "x-rapidapi-key": process.env.REACT_APP_API_KEY_BUY,
       },
     };
    
