@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 import axios from "axios";
@@ -31,7 +31,7 @@ function CreatedCard({cocktailList, setCocktailList}) {
 
             {cocktailList ?
                 cocktailList?.map((oneCocktail)=> (
-                    <div className="card Created-recipes shadow m-2 col-2 p-4 justify-content-between text-justify">
+                    <div key={oneCocktail.idDrink} className="card Created-recipes shadow m-2 col-2 p-4 justify-content-between text-justify">
                         <div className="row">
                         <h6>{oneCocktail.strDrink}</h6>
                         <h3><b>Alcoholic:</b> {oneCocktail.strAlcoholic}</h3>

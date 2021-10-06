@@ -10,7 +10,7 @@ function SeeDetailsButton({seeDetails,cocktail}) {
         ) : (
           <>
             <p>{cocktail.strAlcoholic}</p>
-            <p>{cocktail.strInstructions}</p>
+            <p style={{textAlign:"justify"}}>{cocktail.strInstructions}</p>
             <Link className="text-warning" to={`cocktails/${cocktail.idDrink}`}>See More</Link>
 
           </>

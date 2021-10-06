@@ -23,10 +23,10 @@ function SelectComponent() {
      
         <>
         
-          {selectItem?.map((oneItem)=>{
+          {selectItem?.map((oneItem, index)=>{
               
               return oneItem.strIngredient1.split(" ").length === 1 ?
-            <option value={oneItem.strIngredient1}>{oneItem.strIngredient1}</option> : null
+            <option key={index} value={oneItem.strIngredient1}>{oneItem.strIngredient1}</option> : null
            
           }
               

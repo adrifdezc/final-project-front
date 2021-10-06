@@ -1,37 +1,18 @@
 import { Link } from "react-router-dom";
-import { useContext, useState, useEffect } from "react"; // <== IMPORT
+import { useContext} from "react"; // <== IMPORT
 import { AuthContext } from "./../context/auth.context"; // <== IMPORT
 import { Container, Nav, Navbar } from "react-bootstrap";
 import Logo from "./Landing/Logo.png";
 import CartComponent from "./CartComponent/CartComponent";
-import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL;
 
 function NavbarComp(props) {
   console.log("PROPS", props);
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
-  const { isLoggedIn, user, userData, setUserData, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user, userData, logOutUser } = useContext(AuthContext);
 
-  const [item, setItem] = useState(0)
-  // console.log("THIS IS ITEMS IN THE CART", userData.shopping.length)
-  // const getAllItems = () =>{
-  //   const storedToken = localStorage.getItem("authToken");
-
-  //   axios({
-  //     method: "post",
-  //     url: `${API_URL}/`,
-  //     data: { user: user },
-  //     headers: { Authorization: `Bearer ${storedToken}` },
-  //   })
-  //   .then((response)=>{
-  //     console.log("RESPONSE ITEMS", response.shopping.length)
-  //   })
-  // }
-  useEffect(() => {
-    setItem()
-  }, [])
+  
 
   return (
     <div className="App">

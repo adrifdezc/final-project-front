@@ -212,8 +212,8 @@ header img {
 }
 
 .form-control {
-  width: 400px !important;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .cards {

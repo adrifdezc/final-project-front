@@ -72,10 +72,10 @@ function IngredientCard({ ingredient, getIngredients }) {
             </Button>
           </div>
         </div>
-        {search?.map((oneSearch)=>(
-            <>
-            <li>{oneSearch.title}| <a className="text-primary" href={oneSearch.link}> See Website </a></li>
-            </>
+        {search?.map((oneSearch,index)=>(
+            
+            <li key={index}>{oneSearch.title}| <a className="text-primary" href={oneSearch.link}> See Website </a></li>
+            
         ))}
       </div>
     </>

@@ -5,11 +5,11 @@ function FavButton({ isClicked, handleDelete, handleSubmit }) {
   return (
     <>
       {isClicked ? (
-        <Button onClick={handleDelete}>
-        <i className="fa fa-heart text-danger"></i>
+        <Button className="bg-transparent" onClick={handleDelete}>
+          <i className="fa fa-heart text-danger"></i>
         </Button>
       ) : (
-        <Button onClick={handleSubmit}>     
+        <Button className="bg-transparent" onClick={handleSubmit}>
           <i className="fa fa-heart-o"></i>
         </Button>
       )}

@@ -3,12 +3,11 @@ import axios from "axios";
 import { AuthContext } from "./../context/auth.context";
 import { useContext } from "react";
 import IngredientCard from "../components/IngredientCard";
-import CartComponent from "../components/CartComponent/CartComponent";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function CartPage() {
-  const { user, userData, setUserData} = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
 
   const [ingredients, setIngredient] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

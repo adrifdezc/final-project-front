@@ -86,87 +86,156 @@ function CocktailsDetailsPage(props) {
   }, [loading]);
 
   return (
-    <div className="CocktailDetails text-center">
-      {console.log(userData)}
+    <div className="CocktailDetails p-5 text-center">
       {cocktail && (
-        <div className="row">
-          <div className="col-3">
+        <div className="row align-center p-5 shadow">
+          <div className="col-4">
             <img
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
-              style={{ width: "200px" }}
+              style={{
+                width: "450px",
+              }}
             />
           </div>
-          <div className="col-9">
+          <div className="col-8">
             <h1>{cocktail.strDrink}</h1>
-            <p>{cocktail.strInstructions}</p>
-            {cocktail.strIngredient1 && (
-              <p>
-                {cocktail.strMeasure1} {cocktail.strIngredient1}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient1)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
-            {cocktail.strIngredient2 && (
-              <p>
-                {cocktail.strMeasure2} {cocktail.strIngredient2}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient2)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
-            {cocktail.strIngredient3 && (
-              <p>
-                {cocktail.strMeasure3} {cocktail.strIngredient3}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient3)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
-            {cocktail.strIngredient4 && (
-              <p>
-                {cocktail.strMeasure4} {cocktail.strIngredient4}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient4)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
-            {cocktail.strIngredient5 && (
-              <p>
-                {cocktail.strMeasure5} {cocktail.strIngredient5}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient5)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
-            {cocktail.strIngredient6 && (
-              <p>
-                {cocktail.strMeasure6} {cocktail.strIngredient6}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient6)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
-            {cocktail.strIngredient7 && (
-              <p>
-                {cocktail.strMeasure7} {cocktail.strIngredient7}{" "}
-                <button onClick={() => handleCart(cocktail.strIngredient7)}>
-                  <i className="fa fa-cart-plus"></i>
-                </button>
-              </p>
-            )}
+            <hr />
+            <div className="row">
+            <p style={{width: "400px"}}>{cocktail.strInstructions}</p>
+            </div>
+            <div className="container p-5">
+              {cocktail.strIngredient1 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure1} {cocktail.strIngredient1}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient1)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {cocktail.strIngredient2 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure2} {cocktail.strIngredient2}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient2)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {cocktail.strIngredient3 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure3} {cocktail.strIngredient3}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient3)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {cocktail.strIngredient4 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure4} {cocktail.strIngredient4}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient4)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {cocktail.strIngredient5 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure5} {cocktail.strIngredient5}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient5)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {cocktail.strIngredient6 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure6} {cocktail.strIngredient6}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient6)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {cocktail.strIngredient7 && (
+                <div className="row">
+                  <div className="col-8">
+                    <p>
+                      {cocktail.strMeasure7} {cocktail.strIngredient7}{" "}
+                    </p>
+                  </div>
+                  <div className="col-4">
+                    <button
+                      className="bg-transparent"
+                      onClick={() => handleCart(cocktail.strIngredient7)}
+                    >
+                      <i className="fa fa-cart-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-
-          <Link to="/cocktails">
-            <button>Back to cocktails</button>
-          </Link>
-
-          <Button onClick={handleSubmit}>
-            <FavButton isClicked={isClicked} />
-          </Button>
         </div>
       )}
+
+      <Link to="/cocktails">
+        <button>Back to cocktails</button>
+      </Link>
+
+      <Button className="bg-transparent" onClick={handleSubmit}>
+        <FavButton isClicked={isClicked} />
+      </Button>
     </div>
   );
 }

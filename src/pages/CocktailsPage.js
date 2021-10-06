@@ -2,64 +2,63 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CocktailCard from "../components/CocktailCard";
 import Search from "../components/Search";
+import Landing from "../components/Landing/Landing";
 
 import SelectComponent from "../components/SelectComponent";
 
-
 function CocktailsPage() {
-
   const [cocktails, setCocktails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState("");
 
-  // const getAllCocktails = () => {
-  //   const storedToken = localStorage.getItem("authToken");
-
-  //   axios({
-  //     method: "POST",
-  //     url: `${API_URL}/profile`,
-  //     data: { user: user },
-  //     headers: { Authorization: `Bearer ${storedToken}` },
-  //   })
-  //     .then((response) => {
-  //       setCocktails(response.data.favorites);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
   const handleChange = (event) => {
     let selectedOption = event.target.value;
     setQuery(selectedOption.toLowerCase()); ////////*************************************Change the query so it should enter the search bellow, but it doesnt */
-    // const fetchCocktails = async () => {
-    //   const result = await axios(
-    //     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${selectedOption}`
-    //     );
+  };
 
-    //     //LLamar a usuario + popular favs + array con drinks en favs ... filtrar las que no sean igual a NOM pej
-    //     setCocktails(result.data.drinks);
-    //     setIsLoading(false);
-    //   };
-    //   fetchCocktails();
+  const handleChangeAlcoholic = (e) => {
+    let selectedAlcoholic = e.target.value;
+    setQuery(selectedAlcoholic);
+    console.log("selectedAlcoholic", selectedAlcoholic);
+    console.log("query", query);
   };
   useEffect(() => {
     const fetchCocktails = async () => {
-      const result = await axios(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`
-      );
-
-      //LLamar a usuario + popular favs + array con drinks en favs ... filtrar las que no sean igual a NOM pej
-      setCocktails(result.data.drinks);
-      console.log("DATA", result.data.drinks);
-      setIsLoading(false);
+    
+      let result = [];
+      let result2 = [];
+      let oneCocktail = [];
+      if (query === "Alcoholic" || query === "Non_Alcoholic") {
+        result2 = await axios(
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${query}`
+        );
+        console.log("R2", result2.data.drinks);
+        let i = 0;
+        for (i in result2.data.drinks) {
+          oneCocktail = await axios(
+            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${result2.data.drinks[i].idDrink}`
+          );
+          result.push(oneCocktail.data.drinks[0]);
+        }
+        setCocktails(result);
+        setIsLoading(false);
+      } else {
+        result = await axios(
+          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`
+        );
+        setCocktails(result.data.drinks);
+        setIsLoading(false);
+      }
     };
+
     fetchCocktails();
+    // setQuery("vodka")
   }, [query]);
-  //cocktail.strAlcoholic === "Non alcoholic"
 
   const cocktailList = cocktails?.map(
     (cocktail) =>
-      cocktail.strDrink.toLowerCase().includes(query) && (
+      // cocktail.strDrink.toLowerCase().includes(query) &&
+       (
         <CocktailCard
           loadingPage={"cocktailList"}
           key={cocktail.idDrink}
@@ -72,24 +71,81 @@ function CocktailsPage() {
     <h1>LOADING...</h1>
   ) : (
     <>
-      <div className="container p-3 ">
-        <h1 className="text-center mt-3">OUR COCKTAILS</h1> <br />
-        <Search getQuery={(q) => setQuery(q)} />
-      </div>
-      <div className="row p-4 bg-danger justify-content-around">
-        <div className="col-3 bg-light">
-          <h4>FILTER</h4>
-          <select onChange={handleChange}>
-            <option selected value="ingredient">Ingredient</option>
+      <Landing />
+      <div className="p-3 "></div>
+      <div className="Cocktail-list row p-4 justify-content-around">
+        <div className="col-3 p-4 bg-light shadow">
+          <Search getQuery={(q) => setQuery(q)} />
+          <p>By Ingredient</p>
+          <select className="my-3" onChange={handleChange}>
+            <option defaultValue value="ingredient">
+              Ingredient
+            </option>
             <SelectComponent />
           </select>
+          <p>By Alcohol</p>
+          <form>
+            <div className="row mt-3">
+              <div
+                onChange={handleChangeAlcoholic}
+                className="col-6 form-check"
+              >
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="Alcoholic"
+                  defaultChecked
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                />
+                Alcoholic
+              </div>
+              <div
+                onChange={handleChangeAlcoholic}
+                className="col-6 form-check"
+              >
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="Non_Alcoholic"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                />
+                Non Alcoholic
+              </div>
+            </div>
+          </form>
+          {/* <div className="row mt-3">
+            <p>By Category</p>
+            <div onChange={handleChangeAlcoholic} className="col-6 form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="Cocktail"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+                defaultChecked
+              />
+              Cocktail
+            </div>
+            <div className="col-6 form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                value="Shot"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+              />
+              Shot
+            </div>
+          </div> */}
         </div>
-        <div className="col-7 bg-dark">
+        <div className="col-7 bg-light shadow">
           <section className="cards" id="search">
             <div className="row">
-              {/* {cocktailList || <h1>There's no cocktail</h1>} */}
-
-              {query && (cocktailList || <h1>There's no cocktail</h1>)}
+              {console.log("CocktaiLList", cocktailList)}
+              {cocktailList || <h1>There's no cocktail</h1>}
+              {/* {query && (cocktailList || <h1>There's no cocktail</h1>)} */}
             </div>
           </section>
         </div>
