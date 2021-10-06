@@ -3,6 +3,7 @@ import axios from "axios";
 import CocktailCard from "../components/CocktailCard";
 import Search from "../components/Search";
 import Landing from "../components/Landing/Landing";
+import Loading from "../components/loading.gif";
 
 import SelectComponent from "../components/SelectComponent";
 
@@ -68,7 +69,7 @@ function CocktailsPage() {
   );
 
   return isLoading ? (
-    <h1>LOADING...</h1>
+    <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <>
       <Landing />

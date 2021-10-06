@@ -3,6 +3,7 @@ import axios from "axios";
 import CocktailCard from "../components/CocktailCard";
 import { AuthContext } from "./../context/auth.context";
 import { useContext } from "react";
+import Loading from "../components/loading.gif"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -34,7 +35,7 @@ function ProfilePage() {
   }, []);
 
   return isLoading ? (
-    <p>Loading..</p>
+    <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <div className="Profile">
       <h1>Profile Page</h1>

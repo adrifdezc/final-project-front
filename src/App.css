@@ -21,6 +21,16 @@ body {
   color: #ffaf04!important;
   text-align: right;
 }
+.Ingredients> .row{
+  border-bottom: 1px dotted grey;
+  margin-left: 10px;
+}
+
+.Details{
+  font-style: italic;
+  font-size: 15px;
+  color: #303030ad
+}
 
 .navbar {
   background-color: transparent;
@@ -131,11 +141,9 @@ a {
     margin-left: -5px; 
 }
 
-#Articles{
-padding: 0px 200px 200px 200px;
-}
+
 #Articles img{
-  height: 500px;
+  height: 700px;
   object-fit:cover;
   filter:brightness(0.5);
 

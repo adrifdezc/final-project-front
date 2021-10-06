@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from './../context/auth.context';
 import { Redirect, Route } from 'react-router-dom';
+import Loading from "../components/loading.gif"
 
 function PrivateRoute(props) {
   // Destructure the props
@@ -9,7 +10,7 @@ function PrivateRoute(props) {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
   // If the authentication is still loading ⏳
-  if (isLoading) return <p>Loading ...</p>;
+  if (isLoading) return <img src={Loading} alt="Loading..." style={{width:"100%"}}/>;
 
   // If the user is not logged in ❌
   if (!isLoggedIn) return <Redirect to="/login" />;

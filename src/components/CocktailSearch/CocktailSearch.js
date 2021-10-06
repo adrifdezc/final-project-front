@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CocktailCard from "../CocktailCard"
 import Search from "../Search";
+import Loading from "../loading.gif"
 
 function CocktailSearch
 () {
@@ -34,16 +35,13 @@ function CocktailSearch
   );
 
   return isLoading ? (
-    <h1>LOADING...</h1>
+    <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <>
       <Search getQuery={(q) => setQuery(q)} />
       <section className="cards" id="search">
-              <div className="row">
-
-        {
-          cocktailList || <h1>There's no cocktail</h1>
-        }
+        <div className="row">
+          {cocktailList || <h1>There's no cocktail</h1>}
         </div>
       </section>
     </>

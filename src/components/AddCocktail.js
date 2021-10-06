@@ -3,6 +3,8 @@ import axios from "axios";
 import React from "react";
 import CreatedCard from "./CreatedCard";
 import Landing from "./Landing/Landing";
+import Loading from "../components/loading.gif"
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 function AddCocktail() {
@@ -11,6 +13,7 @@ function AddCocktail() {
   const [strCategory, setStrCategory] = useState("");
   const [strAlcoholic, setStrAlcoholic] = useState("");
   const [strInstructions, setstrInstructions] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +48,7 @@ function AddCocktail() {
       .then((response) => {
         console.log("COCKTAIL ARRAY", response.data);
         setCocktail(response.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   };
@@ -105,7 +109,8 @@ function AddCocktail() {
       </div>
       <div className="Friends row my-5 pt-5 justify-content-center">
         <h1>OUR FRIENDS' RECIPES</h1>
-        <CreatedCard cocktailList={cocktail} setCocktailList={setCocktail} />
+        {isLoading ? <img src={Loading} alt="Loading..." style={{width:"100%"}}/> :
+        <CreatedCard cocktailList={cocktail} setCocktailList={setCocktail} />}
       </div>
     </div>
   );

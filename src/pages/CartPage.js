@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "./../context/auth.context";
 import { useContext } from "react";
 import IngredientCard from "../components/IngredientCard";
+import Loading from "../components/loading.gif"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -35,12 +36,12 @@ function CartPage() {
   }, []);
 
   return isLoading ? (
-    <p> Loading...</p>
+    <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <div className="Profile m-5">
       <div className="">
-      <h1>SHOPPING CART</h1>
-      <section className="container-fluid">
+        <h1>SHOPPING CART</h1>
+        <section className="container-fluid">
           {ingredients?.map((ingredient) => (
             <IngredientCard
               key={ingredient.idIngredient}
@@ -48,10 +49,9 @@ function CartPage() {
               getIngredients={getAllIngredients}
             />
           ))}
-      </section>
+        </section>
       </div>
-      <div className="">
-      </div>
+      <div className=""></div>
     </div>
   );
 }
