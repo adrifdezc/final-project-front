@@ -4,13 +4,14 @@ import GitHubLogo from "./github.png"
 
 function Footer() {
     return (
-      <div>
+      <section id="Contact">
         <div className="container-fluid p-5 text-center bg-light">
           <div className="row align-stretch">
             <div className="col-4 ">
               <h4>ABOUT</h4>
-              <p style={{width:"200px", marginLeft:"25%"}}>
-                App created for the last project of the Full-Stack Web Development Bootcamp Barcelona
+              <p style={{ width: "200px", marginLeft: "25%" }}>
+                App created for the last project of the Full-Stack Web
+                Development Bootcamp Barcelona
               </p>
             </div>
             <div className="col-4 d-flex flex-column">
@@ -33,7 +34,6 @@ function Footer() {
                   alt="LinkedIn"
                   style={{ width: "15px" }}
                 />{" "}
-            
               </a>
               <a href="https://www.linkedin.com/in/adrian-fernandez-carmona/">
                 {" "}
@@ -46,7 +46,7 @@ function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
 }
 

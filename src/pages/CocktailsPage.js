@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CocktailCard from "../components/CocktailCard";
 import Search from "../components/Search";
-import Landing from "../components/Landing/Landing";
 import Loading from "../components/loading.gif";
 import Video from "../components/Landing/Video";
 
 import SelectComponent from "../components/SelectComponent";
+import RadioForm from "../components/RadioForm";
 
 function CocktailsPage() {
   const [cocktails, setCocktails] = useState([]);
@@ -53,11 +53,9 @@ function CocktailsPage() {
     };
 
     fetchCocktails();
-    // setQuery("vodka")
   }, [query]);
 
   const cocktailList = cocktails?.map((cocktail) => (
-    // cocktail.strDrink.toLowerCase().includes(query) &&
     <CocktailCard
       loadingPage={"cocktailList"}
       key={cocktail.idDrink}
@@ -81,44 +79,9 @@ function CocktailsPage() {
           <Search getQuery={(q) => setQuery(q)} />
           </div>
           <div className="row  justify-content-between">
-          <select className="col-8 my-3 w-50 bg-white" onChange={handleChange}>
-            <option defaultValue value="ingredient">
-              Ingredient
-            </option>
-            <SelectComponent />
-          </select>
+            <SelectComponent handleChange={handleChange}/>
           <div className="col-4 ">
-          <form>
-            <div className="row ml-2 mt-4">
-              <div
-                onChange={handleChangeAlcoholic}
-                className="col-6 form-check"
-              >
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="Alcoholic"
-                  defaultChecked
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
-                Alcoholic
-              </div>
-              <div
-                onChange={handleChangeAlcoholic}
-                className="col-6 form-check"
-              >
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value="Non_Alcoholic"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
-                Non Alcoholic
-              </div>
-            </div>
-          </form>
+            <RadioForm handleChangeAlcoholic = {handleChangeAlcoholic}/>
           </div>
         </div>
         <div className="row bg-light shadow">

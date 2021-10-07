@@ -6,7 +6,7 @@ import CartIMG from "./img/CartIMG.png";
 
 function Services() {
   return (
-    <>
+    <section id="Services" className="p-5 text-center">
       <h1>Welcome to CocktailDO</h1>
       <section id="Section" className="row align-items-center p-4">
         <ServicesCard
@@ -29,7 +29,7 @@ function Services() {
           link={"/cart"}
         />
       </section>
-    </>
+    </section>
   );
 }
 

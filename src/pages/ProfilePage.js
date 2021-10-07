@@ -8,7 +8,7 @@ import Loading from "../components/loading.gif"
 const API_URL = process.env.REACT_APP_API_URL;
 
 function ProfilePage() {
-  const { user } = useContext(AuthContext);
+  const { user, userData } = useContext(AuthContext);
 
   const [cocktails, setCocktails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,6 +38,7 @@ function ProfilePage() {
     <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <div className="Profile">
+      {console.log("user", userData)}
       <h1>Profile Page</h1>
       <section className="cards" id="search">
         <div className="row">

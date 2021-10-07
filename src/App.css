@@ -189,6 +189,10 @@ header img {
   margin: 10px;
   outline: none;
 }
+
+.Favs .card{
+  max-width: 400px;
+}
 .landing {
   background-image: url("./components/Landing/background.jpeg");
   background-size: cover;

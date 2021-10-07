@@ -6,6 +6,7 @@ function News() {
   const [news, setNews] = useState();
 
 
+
   const options = {
     method: "GET",
     url: "https://webit-news-search.p.rapidapi.com/search",
@@ -33,47 +34,54 @@ function News() {
   }, []);
 
   return (
-    <>
-    <h1 className="text-center mt-5">DID YOU KNOW?</h1>
-    <Carousel fade>
-      {news?.map((article, index) =>
-        //Only the first one can be "active"
-        index === 0 ? (
-          <Carousel.Item key={index} className="carousel-item active">
-            <img
-              className="d-block w-100"
-              style={{ width: "100%" }}
-              src={article.image}
-              alt={article.title} />
-            <Carousel.Caption>
-              <h5 className="card-title">{article.title}</h5>
-              <p className="card-text">{article.description}</p>
-              <a href={article.url}>
-                {" "}
-                <h3>Read More</h3>{" "}
-              </a>
-            </Carousel.Caption>
-          </Carousel.Item>
-          //Avoid not related news with cocktails
-        ) : (index !== 2 && index !== 3 && index !== 7 && index !== 6 && index !== 9) ? (
-          <Carousel.Item key={index} className="carousel-item">
-            <img
-              className="d-block w-100"
-              style={{ width: "100%" }}
-              src={article.image}
-              alt={article.title} />
-            <Carousel.Caption>
-              <h5 className="card-title">{article.title}</h5>
-              <p className="card-text">{article.description}</p>
-              <a href={article.url}>
-                {" "}
-                <h5>Read More</h5>{" "}
-              </a>
-            </Carousel.Caption>
-          </Carousel.Item>
-        ) : null
-      )}
-    </Carousel></>
+    <section id="Articles" className="m-4 text-center">
+      <h1 className="text-center mt-5">DID YOU KNOW?</h1>
+      <Carousel fade>
+        {news?.map((article, index) =>
+          //Only the first one can be "active"
+          index === 0 ? (
+            <Carousel.Item key={index} className="carousel-item active">
+              <img
+                className="d-block w-100"
+                style={{ width: "100%" }}
+                src={article.image}
+                alt={article.title}
+              />
+              <Carousel.Caption>
+                <h5 className="card-title">{article.title}</h5>
+                <p className="card-text">{article.description}</p>
+                <a href={article.url}>
+                  {" "}
+                  <h3>Read More</h3>{" "}
+                </a>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ) : //Avoid not related news with cocktails
+          index !== 2 &&
+            index !== 3 &&
+            index !== 7 &&
+            index !== 6 &&
+            index !== 9 ? (
+            <Carousel.Item key={index} className="carousel-item">
+              <img
+                className="d-block w-100"
+                style={{ width: "100%" }}
+                src={article.image}
+                alt={article.title}
+              />
+              <Carousel.Caption>
+                <h5 className="card-title">{article.title}</h5>
+                <p className="card-text">{article.description}</p>
+                <a href={article.url}>
+                  {" "}
+                  <h5>Read More</h5>{" "}
+                </a>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ) : null
+        )}
+      </Carousel>{" "}
+    </section>
   );
 }
 
