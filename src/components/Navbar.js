@@ -60,11 +60,11 @@ function NavbarComp(props) {
               <>
                 <Link to="/signup">
                   {" "}
-                  <button>Signup</button>{" "}
+                  <button>Sign Up</button>{" "}
                 </Link>
                 <Link to="/login">
                   {" "}
-                  <button>Login</button>{" "}
+                  <button>Log In</button>{" "}
                 </Link>
               </>
             )}

@@ -85,7 +85,7 @@ function AddCocktail() {
             <input
               className="shadow py-3 "
               type="text"
-              placeholder="Yes/No"
+              placeholder="Alcoholic: Yes/No"
               name="alocoholic"
               value={strAlcoholic}
               onChange={(e) => setStrAlcoholic(e.target.value)}

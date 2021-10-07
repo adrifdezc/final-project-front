@@ -53,7 +53,7 @@ function CreatedCard({ cocktailList, setCocktailList }) {
                     </button>
                   )}
                 </div>
-                <div className="col-6">
+                <div className="col-6 w-100">
                   <h3>{oneCocktail.createdAt.substring(0, 10)}</h3>
                 </div>
               </div>

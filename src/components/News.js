@@ -35,7 +35,8 @@ function News() {
 
   return (
     <section id="Articles" className="m-4 text-center">
-      <h1 className="text-center mt-5">DID YOU KNOW?</h1>
+      <hr />
+      <h1 className="text-center my-5">DID YOU KNOW?</h1>
       <Carousel fade>
         {news?.map((article, index) =>
           //Only the first one can be "active"

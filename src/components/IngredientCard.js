@@ -12,6 +12,7 @@ function IngredientCard({ ingredient, getIngredients }) {
 
   const [search, setSearch] = useState();
   const [isClicked, setIsClicked] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleDelete = () => {
     axios({
@@ -45,6 +46,7 @@ function IngredientCard({ ingredient, getIngredients }) {
         const response = await axios(options);
         
         setSearch(response.data.results);
+        setIsLoading(false)
         console.log(response.data);
       };
       fetchSearch()
@@ -87,7 +89,7 @@ function IngredientCard({ ingredient, getIngredients }) {
             </div>
             
             <div className="row text-justify">
-            {isClicked && search?.map((oneSearch, index) => (
+            {isClicked  && search?.map((oneSearch, index) => (
               <div className="col-6 text-center bg-light" key={index}>
                 <p>
                   {oneSearch.title}

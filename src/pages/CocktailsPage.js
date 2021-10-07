@@ -67,7 +67,7 @@ function CocktailsPage() {
     <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <>
-    <div className="div" style={{position:"absolute", zIndex:"-1"}}>
+    <div style={{position:"absolute", zIndex:"-1"}}>
       <Video />
     </div>
       <div className="p-5 text-secondary" style={{marginTop:"100px", marginLeft:"50px"}}>
@@ -75,16 +75,16 @@ function CocktailsPage() {
         <p>Browse recipes from the world's top bartenders.</p>
       </div>
       <div className="Cocktail-list row p-5 justify-content-around">
-        <div className="row p-5 shadow">
+        <div className="row p-3 shadow">
           <Search getQuery={(q) => setQuery(q)} />
           </div>
-          <div className="row  justify-content-between">
+          <div className="row p-3 justify-content-between">
             <SelectComponent handleChange={handleChange}/>
           <div className="col-4 ">
             <RadioForm handleChangeAlcoholic = {handleChangeAlcoholic}/>
           </div>
         </div>
-        <div className="row bg-light shadow">
+        <div className="row bg-light mt-4 shadow">
           <section className="cards" id="search">
             <div className="row">
               {console.log("CocktaiLList", cocktailList)}

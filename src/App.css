@@ -74,6 +74,7 @@ a {
 .User > Button:hover {
   color: #ffd904 !important;
 }
+
 .User,
 .User > Button {
   color: #303030e3;
