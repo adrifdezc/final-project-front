@@ -39,9 +39,26 @@ function CartPage() {
     <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <div className="Profile m-5">
-      <div className="">
-        <h1>SHOPPING CART</h1>
+      <div className="row">
+        <div className="col-3 bg-light">
+         <p style={{textAlign:"right"}}>Welcome to the cart, {user.name}.</p> 
+         <h3 style={{textAlign: "right",
+    margin: "20px",
+    paddingTop: "10%"}}>We provide you with the best options to buy the ingredients you need, simply click on the list icon button to get the best online shops!</h3>
+
+        </div>
+        <div className="col-9">
+
+        <h4>
+          {" "}
+          {ingredients.length === 0 ? (
+            <p>Your shopping cart is empty</p>
+          ) : (
+            <p>Your shopping cart</p>
+          )}
+        </h4>
         <section className="container-fluid">
+          <div className="row">
           {ingredients?.map((ingredient) => (
             <IngredientCard
               key={ingredient.idIngredient}
@@ -49,10 +66,14 @@ function CartPage() {
               getIngredients={getAllIngredients}
             />
           ))}
+          </div>
         </section>
+        </div>
       </div>
-      <div className=""></div>
-    </div>
+      <div className="col-6">
+        
+      </div>
+      </div>
   );
 }
 

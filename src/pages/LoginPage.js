@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Landing from "../components/Landing/Landing";
+import Video from "../components/Landing/Video"
 const API_URL = process.env.REACT_APP_API_URL;
 
 function LoginPage(props) {
@@ -62,7 +63,10 @@ function LoginPage(props) {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p>Don't have an account yet?</p>
-        <Link to={"/signup"}> Sign Up</Link>
+        <Link to={"/signup"}>
+          {" "}
+            Sign Up
+        </Link>
       </div>
     </>
   );

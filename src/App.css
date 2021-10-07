@@ -139,12 +139,6 @@ a {
   margin-left: -5px;
 }
 
-#Articles img {
-  height: 700px;
-  object-fit: cover;
-  filter: brightness(0.5);
-}
-
 .Form > button {
   width: 150px !important;
 }
@@ -209,8 +203,30 @@ header img {
   height: 800px;
   width: 100%;
 }
+.carousel-caption > p, .carousel-caption > h5{
+  color: #ffeb77;
+  text-shadow: 0 0 15px black;
+}
 #Articles {
-  margin: 6.5rem !important;
+  margin: 0 15% 5% 15%!important;
+}
+#Articles img {
+  height: 500px;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+.col-lg-2 {
+    display: flex;
+    flex-direction: row;
+}
+.card{
+justify-content: space-between;
+}
+.description p{
+  font-size: 10px;
+  overflow: scroll;
+  max-height: 100px;
+  text-align: justify;
 }
 
 .LoginPage > h1,

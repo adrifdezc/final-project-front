@@ -4,6 +4,7 @@ import CocktailCard from "../components/CocktailCard";
 import Search from "../components/Search";
 import Landing from "../components/Landing/Landing";
 import Loading from "../components/loading.gif";
+import Video from "../components/Landing/Video";
 
 import SelectComponent from "../components/SelectComponent";
 
@@ -25,7 +26,6 @@ function CocktailsPage() {
   };
   useEffect(() => {
     const fetchCocktails = async () => {
-    
       let result = [];
       let result2 = [];
       let oneCocktail = [];
@@ -56,43 +56,43 @@ function CocktailsPage() {
     // setQuery("vodka")
   }, [query]);
 
-  const cocktailList = cocktails?.map(
-    (cocktail) =>
-      // cocktail.strDrink.toLowerCase().includes(query) &&
-       (
-        <CocktailCard
-          loadingPage={"cocktailList"}
-          key={cocktail.idDrink}
-          cocktail={cocktail}
-        ></CocktailCard>
-      )
-  );
+  const cocktailList = cocktails?.map((cocktail) => (
+    // cocktail.strDrink.toLowerCase().includes(query) &&
+    <CocktailCard
+      loadingPage={"cocktailList"}
+      key={cocktail.idDrink}
+      cocktail={cocktail}
+    ></CocktailCard>
+  ));
 
   return isLoading ? (
     <img src={Loading} alt="Loading..." style={{ width: "100%" }} />
   ) : (
     <>
-      <Landing />
-      <div className="p-3 "></div>
-      <div className="Cocktail-list row p-4 justify-content-around">
-        <div className="row p-4 bg-light shadow">
+    <div className="div" style={{position:"absolute", zIndex:"-1"}}>
+      <Video />
+    </div>
+      <div className="p-5" style={{marginTop:"100px", marginLeft:"50px"}}>
+        <h1>Find your new favorite drink</h1>
+        <p>Browse recipes from the world's top bartenders.</p>
+      </div>
+      <div className="Cocktail-list row p-5 justify-content-around">
+        <div className="row p-5 shadow">
           <Search getQuery={(q) => setQuery(q)} />
-          <p>By Ingredient</p>
-          <select className="my-3" onChange={handleChange}>
+          </div>
+          <div className="row shadow justify-content-between">
+          <select className="col-8 my-3 w-50 bg-white" onChange={handleChange}>
             <option defaultValue value="ingredient">
               Ingredient
             </option>
             <SelectComponent />
           </select>
+          <div className="col-4 ">
           <form>
-            <div className="row mt-3">
-              <div className="col-4">
-
-          <p>By Alcohol</p>
-              </div>
+            <div className="row ml-2 mt-4">
               <div
                 onChange={handleChangeAlcoholic}
-                className="col-4 form-check"
+                className="col-6 form-check"
               >
                 <input
                   className="form-check-input"
@@ -106,7 +106,7 @@ function CocktailsPage() {
               </div>
               <div
                 onChange={handleChangeAlcoholic}
-                className="col-4 form-check"
+                className="col-6 form-check"
               >
                 <input
                   className="form-check-input"
@@ -119,37 +119,13 @@ function CocktailsPage() {
               </div>
             </div>
           </form>
-          {/* <div className="row mt-3">
-            <p>By Category</p>
-            <div onChange={handleChangeAlcoholic} className="col-6 form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="Cocktail"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-                defaultChecked
-              />
-              Cocktail
-            </div>
-            <div className="col-6 form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="Shot"
-                name="flexRadioDefault"
-                id="flexRadioDefault2"
-              />
-              Shot
-            </div>
-          </div> */}
+          </div>
         </div>
         <div className="row bg-light shadow">
           <section className="cards" id="search">
             <div className="row">
               {console.log("CocktaiLList", cocktailList)}
               {cocktailList || <h1>There's no cocktail</h1>}
-              {/* {query && (cocktailList || <h1>There's no cocktail</h1>)} */}
             </div>
           </section>
         </div>

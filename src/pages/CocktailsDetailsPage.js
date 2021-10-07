@@ -5,7 +5,7 @@ import { AuthContext } from "./../context/auth.context";
 import { useContext } from "react";
 import Button from "@restart/ui/esm/Button";
 import FavButton from "../components/FavButton/FavButton";
-import Landing from "../components/Landing/Landing"
+import Video from "../components/Landing/Video"
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -87,7 +87,10 @@ function CocktailsDetailsPage(props) {
 
   return (
     <>
-      <div className="CocktailDetails p-5 text-center">
+      <div style={{ position: "absolute", zIndex: "-1" }}>
+        <Video />
+      </div>
+      <div className="CocktailDetails p-5 mt-5 text-center">
         {cocktail && (
           <div
             className="row align-center shadow"
