@@ -72,7 +72,7 @@ function CocktailsPage() {
     <div className="div" style={{position:"absolute", zIndex:"-1"}}>
       <Video />
     </div>
-      <div className="p-5" style={{marginTop:"100px", marginLeft:"50px"}}>
+      <div className="p-5 text-secondary" style={{marginTop:"100px", marginLeft:"50px"}}>
         <h1>Find your new favorite drink</h1>
         <p>Browse recipes from the world's top bartenders.</p>
       </div>
@@ -80,7 +80,7 @@ function CocktailsPage() {
         <div className="row p-5 shadow">
           <Search getQuery={(q) => setQuery(q)} />
           </div>
-          <div className="row shadow justify-content-between">
+          <div className="row  justify-content-between">
           <select className="col-8 my-3 w-50 bg-white" onChange={handleChange}>
             <option defaultValue value="ingredient">
               Ingredient

@@ -55,7 +55,7 @@ function News() {
             </Carousel.Caption>
           </Carousel.Item>
           //Avoid not related news with cocktails
-        ) : (index !== 2 && index !== 3 && index !== 7 && index !== 9) ? (
+        ) : (index !== 2 && index !== 3 && index !== 7 && index !== 6 && index !== 9) ? (
           <Carousel.Item key={index} className="carousel-item">
             <img
               className="d-block w-100"

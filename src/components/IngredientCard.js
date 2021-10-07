@@ -87,7 +87,7 @@ function IngredientCard({ ingredient, getIngredients }) {
             </div>
             
             <div className="row text-justify">
-            {search?.map((oneSearch, index) => (
+            {isClicked && search?.map((oneSearch, index) => (
               <div className="col-6 text-center bg-light" key={index}>
                 <p>
                   {oneSearch.title}
