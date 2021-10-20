@@ -90,6 +90,7 @@ function CocktailsDetailsPage(props) {
       <div style={{ position: "absolute", zIndex: "-1" }}>
         <Video />
       </div>
+      
       <div className="CocktailDetails p-5 mt-5 text-center">
         {cocktail && (
           <div

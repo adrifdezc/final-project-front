@@ -38,6 +38,7 @@ function AddCocktail() {
         setstrInstructions("");
       });
   };
+  
   const getCreated = () => {
     const storedToken = localStorage.getItem("authToken");
 

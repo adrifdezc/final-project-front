@@ -23,8 +23,6 @@ function App() {
         <Route component={NavbarComp} />
       <Switch>
         <Route exact path="/" component={LandingPage} />
-
-        {/* 👇 UPDATE THE EXISTING ROUTES 👇  */}
         <PrivateRoute exact path="/cocktails" component={CocktailsPage} />
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <PrivateRoute exact path="/create" component={CreateCocktail} />
